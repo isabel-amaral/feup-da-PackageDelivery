@@ -1,5 +1,17 @@
 #include "Order.h"
 
+int Order::getVolume() const {
+    return volume;
+}
+
+int Order::getWeight() const {
+    return weight;
+}
+
+int Order::getDeliveryFee() const {
+    return deliveryFee;
+}
+
 void Order::setVolume(int vol) {
     volume = vol;
 }
@@ -10,16 +22,4 @@ void Order::setWeight(int wei) {
 
 void Order::setDeliveryFee(int fee) {
     deliveryFee = fee;
-}
-
-int Order::getVolume() {
-    return volume;
-}
-
-int Order::getWeight() {
-    return weight;
-}
-
-int Order::getDeliveryFee() {
-    return deliveryFee;
 }
