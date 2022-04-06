@@ -13,6 +13,8 @@ private:
     int maxVolume;
     int deliveryCost;
     list<Order> ordersToDeliver;
+    int currentOrderWeight;
+    int currentOrderVol;
 
 public:
     Driver();
@@ -27,7 +29,7 @@ public:
     void setMaxVolume(int maxVolume);
     void setDeliveryCost(int deliveryCost);
     void setOrdersToDeliver(const list<Order> &ordersToDeliver);
-    void addOrder(const Order& order);
+    bool addOrder(const Order& order);
 };
 
 #endif //FEUP_DA_PACKAGEDELIVERY_DRIVER_H

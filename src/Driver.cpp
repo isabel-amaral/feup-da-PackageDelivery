@@ -10,6 +10,8 @@ Driver::Driver(string r, int w, int v, int c) {
     this->maxVolume = v;
     this->deliveryCost = c;
     this->ordersToDeliver = {};
+    this->currentOrderWeight = 0;
+    this->currentOrderVol = 0;
 }
 
 const string &Driver::getCarRegister() const {
@@ -53,6 +55,11 @@ void Driver::setOrdersToDeliver(const list<Order> &ordersToDeliver) {
 }
 
 //TODO: verificar se é possível
-void Driver::addOrder(const Order &order) {
+bool Driver::addOrder(const Order &order) {
+    if (currentOrderWeight + order.getWeight() > maxWeight)
+        return false;
+    if (currentOrderVol + order.getVolume() > maxVolume)
+        return false;
     this->ordersToDeliver.push_back(order);
+    return true;
 }
