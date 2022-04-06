@@ -1,0 +1,21 @@
+Possíveis classes:
+
+1. Encomenda/Pedido
+(volume e peso + valor a pagar à empresa) 
+que seria a classe mãe
+
+Classes filhas (2. e 3.)
+2. Entrega Normal ()
+3. Entrega Expresso (tempo estimado de entrega: ida + volta)
+
+4. Estafeta 
+(encomendas por entregar - isto é o q temos de ser nós a definir, n sei se faz sentido estar na classe)
+(matrícula da viatura, peso máximo, volume máximo, valor que a empresa irá pagar)
+
+5. Empresa 
+(Estafetas, todas encomendas que ainda não foram entregues, lucro
+encomendas entregues? - mais uma vez, isto é o q nós temos de decidir, n sei se precisamos dessa distinção)
+
+classes base: (não são prioritárias)
+LoadData (loadEcomendas(), loadEstafetas,etc)
+Menu
