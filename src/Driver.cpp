@@ -9,7 +9,7 @@ Driver::Driver(string r, int w, int v, int c) {
     this->maxWeight = w;
     this->maxVolume = v;
     this->deliveryCost = c;
-    //this->ordersToDeliver = {}; //TODO
+    this->ordersToDeliver = {};
 }
 
 const string &Driver::getCarRegister() const {
@@ -28,11 +28,9 @@ int Driver::getDeliveryCost() const {
     return deliveryCost;
 }
 
-/* TODO
 const list<Order>& Driver::getOrdersToDeliver() const {
     return ordersToDeliver;
 }
-*/
 
 void Driver::setCarRegister(const string& carRegister) {
     this->carRegister = carRegister;
@@ -50,13 +48,11 @@ void Driver::setDeliveryCost(int deliveryCost) {
     this->deliveryCost = deliveryCost;
 }
 
-/* TODO
 void Driver::setOrdersToDeliver(const list<Order> &ordersToDeliver) {
     this->ordersToDeliver = ordersToDeliver;
 }
-*/
 
 //TODO: verificar se é possível
-bool Driver::addOrder(const int &order) {
+void Driver::addOrder(const Order &order) {
     this->ordersToDeliver.push_back(order);
 }

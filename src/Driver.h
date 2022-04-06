@@ -3,7 +3,7 @@
 
 #include <string>
 #include <list>
-//#include "Order.h" //TODO
+#include "Order.h"
 using namespace std;
 
 class Driver {
@@ -12,7 +12,7 @@ private:
     int maxWeight;
     int maxVolume;
     int deliveryCost;
-    list<Order> ordersToDeliver; //TODO
+    list<Order> ordersToDeliver;
 
 public:
     Driver();
@@ -21,12 +21,12 @@ public:
     int getMaxWeight() const;
     int getMaxVolume() const;
     int getDeliveryCost() const;
-    //const list<Order> &getOrdersToDeliver() const; //TODO
+    const list<Order> &getOrdersToDeliver() const;
     void setCarRegister(const string &carRegister);
     void setMaxWeight(int maxWeight);
     void setMaxVolume(int maxVolume);
     void setDeliveryCost(int deliveryCost);
-    //void setOrdersToDeliver(const list<Order> &ordersToDeliver); //TODO
+    void setOrdersToDeliver(const list<Order> &ordersToDeliver);
     void addOrder(const Order& order);
 };
 
