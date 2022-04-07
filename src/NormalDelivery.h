@@ -5,9 +5,17 @@
 #ifndef FEUP_DA_PACKAGEDELIVERY_NORMALDELIVERY_H
 #define FEUP_DA_PACKAGEDELIVERY_NORMALDELIVERY_H
 
-#include "Order.h"
-
-class NormalDelivery : public Order {
+class NormalDelivery {
+    int volume;
+    int weight;
+    int deliveryFee;
+public:
+    int getVolume() const;
+    int getWeight() const;
+    int getDeliveryFee() const;
+    void setVolume(int vol);
+    void setWeight(int wei);
+    void setDeliveryFee(int fee);
 };
 
 

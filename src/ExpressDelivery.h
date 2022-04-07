@@ -1,13 +1,20 @@
 #ifndef FEUP_DA_PACKAGEDELIVERY_EXPRESSDELIVERY_H
 #define FEUP_DA_PACKAGEDELIVERY_EXPRESSDELIVERY_H
 
-#include "Order.h"
-
-class ExpressDelivery : public Order {
+class ExpressDelivery {
+    int volume;
+    int weight;
+    int deliveryFee;
     int estimatedDeliveryTime;
 public:
-    void setEstimatedDeliveryTime(int edt);
+    int getVolume() const;
+    int getWeight() const;
+    int getDeliveryFee() const;
     int getEstimatedDeliveryTime();
+    void setVolume(int vol);
+    void setWeight(int wei);
+    void setDeliveryFee(int fee);
+    void setEstimatedDeliveryTime(int edt);
 };
 
 

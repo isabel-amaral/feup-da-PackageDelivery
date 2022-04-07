@@ -3,7 +3,8 @@
 
 #include <string>
 #include <list>
-#include "Order.h"
+#include "NormalDelivery.h"
+
 using namespace std;
 
 class Driver {
@@ -12,7 +13,7 @@ private:
     int maxWeight;
     int maxVolume;
     int deliveryCost;
-    list<Order> ordersToDeliver;
+    list<NormalDelivery> ordersToDeliver;
     int currentOrderWeight;
     int currentOrderVol;
 
@@ -23,13 +24,13 @@ public:
     int getMaxWeight() const;
     int getMaxVolume() const;
     int getDeliveryCost() const;
-    const list<Order> &getOrdersToDeliver() const;
+    const list<NormalDelivery> &getOrdersToDeliver() const;
     void setCarRegister(const string &carRegister);
     void setMaxWeight(int maxWeight);
     void setMaxVolume(int maxVolume);
     void setDeliveryCost(int deliveryCost);
-    void setOrdersToDeliver(const list<Order> &ordersToDeliver);
-    bool addOrder(const Order& order);
+    void setOrdersToDeliver(const list<NormalDelivery> &ordersToDeliver);
+    bool addOrder(const NormalDelivery& order);
 };
 
 #endif //FEUP_DA_PACKAGEDELIVERY_DRIVER_H
