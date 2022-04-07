@@ -1,8 +1,11 @@
-//
-// Created by guilh on 06/04/2022.
-//
-
 #include "ExpressDelivery.h"
+
+ExpressDelivery::ExpressDelivery(int v, int w, int fee, int edt) {
+    volume = v;
+    weight = w;
+    deliveryFee = fee;
+    estimatedDeliveryTime = edt;
+}
 
 void ExpressDelivery::setVolume(int vol) {
     volume = vol;

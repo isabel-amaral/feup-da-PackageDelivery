@@ -30,7 +30,7 @@ int Driver::getDeliveryCost() const {
     return deliveryCost;
 }
 
-const list<Order>& Driver::getOrdersToDeliver() const {
+const list<NormalDelivery>& Driver::getOrdersToDeliver() const {
     return ordersToDeliver;
 }
 
@@ -50,12 +50,12 @@ void Driver::setDeliveryCost(int deliveryCost) {
     this->deliveryCost = deliveryCost;
 }
 
-void Driver::setOrdersToDeliver(const list<Order> &ordersToDeliver) {
+void Driver::setOrdersToDeliver(const list<NormalDelivery> &ordersToDeliver) {
     this->ordersToDeliver = ordersToDeliver;
 }
 
 //TODO: verificar se é possível
-bool Driver::addOrder(const Order &order) {
+bool Driver::addOrder(const NormalDelivery &order) {
     if (currentOrderWeight + order.getWeight() > maxWeight)
         return false;
     if (currentOrderVol + order.getVolume() > maxVolume)

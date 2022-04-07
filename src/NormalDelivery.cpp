@@ -1,8 +1,10 @@
-//
-// Created by guilh on 06/04/2022.
-//
-
 #include "NormalDelivery.h"
+
+NormalDelivery::NormalDelivery(int v, int w, int fee) {
+    volume = v;
+    weight = w;
+    deliveryFee = fee;
+}
 
 int NormalDelivery::getVolume() const {
     return volume;

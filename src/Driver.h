@@ -16,7 +16,6 @@ private:
     list<NormalDelivery> ordersToDeliver;
     int currentOrderWeight;
     int currentOrderVol;
-
 public:
     Driver();
     Driver(string r, int w, int v, int c);

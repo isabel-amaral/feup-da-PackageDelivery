@@ -7,6 +7,7 @@ class ExpressDelivery {
     int deliveryFee;
     int estimatedDeliveryTime;
 public:
+    ExpressDelivery(int v, int w, int fee, int edt);
     int getVolume() const;
     int getWeight() const;
     int getDeliveryFee() const;
