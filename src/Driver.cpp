@@ -4,18 +4,13 @@ Driver::Driver() {
 
 }
 
-Driver::Driver(string r, int w, int v, int c) {
-    this->carRegister = r;
+Driver::Driver(int w, int v, int c) {
     this->maxWeight = w;
     this->maxVolume = v;
     this->deliveryCost = c;
     this->ordersToDeliver = {};
     this->currentOrderWeight = 0;
     this->currentOrderVol = 0;
-}
-
-const string &Driver::getCarRegister() const {
-    return carRegister;
 }
 
 int Driver::getMaxWeight() const {
@@ -32,10 +27,6 @@ int Driver::getDeliveryCost() const {
 
 const list<NormalDelivery>& Driver::getOrdersToDeliver() const {
     return ordersToDeliver;
-}
-
-void Driver::setCarRegister(const string& carRegister) {
-    this->carRegister = carRegister;
 }
 
 void Driver::setMaxWeight(int maxWeight) {

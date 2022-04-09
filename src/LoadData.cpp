@@ -37,7 +37,7 @@ void LoadData::loadDrivers(const string &driversFilename) {
         getline (s, tempText, ' ');
         cost = stoi(tempText);
 
-        Driver driver("abc", maxWeight, maxVol, cost);  //TODO: remover "abc" (carRegister)
+        Driver driver(maxWeight, maxVol, cost); 
         this->company.addDriver(driver);
     }
     f.close();

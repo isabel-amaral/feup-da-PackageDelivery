@@ -9,7 +9,6 @@ using namespace std;
 
 class Driver {
 private:
-    string carRegister;
     int maxWeight;
     int maxVolume;
     int deliveryCost;
@@ -18,13 +17,11 @@ private:
     int currentOrderVol;
 public:
     Driver();
-    Driver(string r, int w, int v, int c);
-    const string &getCarRegister() const;
+    Driver(int w, int v, int c);
     int getMaxWeight() const;
     int getMaxVolume() const;
     int getDeliveryCost() const;
     const list<NormalDelivery> &getOrdersToDeliver() const;
-    void setCarRegister(const string &carRegister);
     void setMaxWeight(int maxWeight);
     void setMaxVolume(int maxVolume);
     void setDeliveryCost(int deliveryCost);
