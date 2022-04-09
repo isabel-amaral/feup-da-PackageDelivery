@@ -1,5 +1,7 @@
 #include <iostream>
 #include <algorithm>
+#include "Company.h"
+#include "LoadData.h"
 
 using namespace std;
 
@@ -65,13 +67,12 @@ int firstFitDec(int weight[], int n, int c[], int size)
     return firstFit(weight, n, c, size);
 }
 
-// Driver program
-int main()
-{
-    int weight[] = { 7,2,3,2,2,1,8 };
-    int c[] = {5,5,5,5};
-    int n = sizeof(weight) / sizeof(weight[0]);
-    int size = sizeof(c) / sizeof(c[0]);
-    cout << "Minimum number of drivers needed: " << firstFitDec(weight, n, c, size);
-    return 0;
+int main(){
+    Company company;
+    string d= "drivers.txt";
+    string n = "normalDel.txt";
+    string e = "expressDel.txt";
+    LoadData loadData(company, d, n, e);
+    company = loadData.getCompany();
+    cout << "HEllo" << endl;
 }
