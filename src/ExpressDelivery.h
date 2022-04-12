@@ -11,7 +11,7 @@ public:
     int getVolume() const;
     int getWeight() const;
     int getDeliveryFee() const;
-    int getEstimatedDeliveryTime();
+    int getEstimatedDeliveryTime() const;
     void setVolume(int vol);
     void setWeight(int wei);
     void setDeliveryFee(int fee);

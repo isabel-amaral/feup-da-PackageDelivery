@@ -35,6 +35,6 @@ int ExpressDelivery::getDeliveryFee() const {
     return deliveryFee;
 }
 
-int ExpressDelivery::getEstimatedDeliveryTime() {
+int ExpressDelivery::getEstimatedDeliveryTime() const {
     return estimatedDeliveryTime;
 }
