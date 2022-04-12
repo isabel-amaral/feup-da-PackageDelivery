@@ -2,9 +2,6 @@
 #define FEUP_DA_PACKAGEDELIVERY_EXPRESSDELIVERY_H
 
 class ExpressDelivery {
-    int volume;
-    int weight;
-    int deliveryFee;
     int estimatedDeliveryTime;
 public:
     ExpressDelivery(int v, int w, int fee, int edt);
