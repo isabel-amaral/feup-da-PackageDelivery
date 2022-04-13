@@ -15,9 +15,9 @@ class Company {
     int profit;
 public:
     Company();
-    const list<Driver> &getDrivers() const;
-    const list<NormalDelivery> &getNormalDeliveries() const;
-    const list<ExpressDelivery> &getExpressDeliveries() const;
+    list<Driver> getDrivers();
+    list<NormalDelivery> &getNormalDeliveries();
+    list<ExpressDelivery> &getExpressDeliveries();
     int getProfit() const;
     void setDrivers(const list<Driver> &drivers);
     void setNormalDeliveries(const list<NormalDelivery> &normalDeliveries);

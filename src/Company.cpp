@@ -5,15 +5,15 @@ Company::Company() {
     this->profit = 0;
 }
 
-const list<Driver> &Company::getDrivers() const {
+list<Driver> Company::getDrivers() {
     return drivers;
 }
 
-const list<NormalDelivery> &Company::getNormalDeliveries() const {
+list<NormalDelivery> &Company::getNormalDeliveries(){
     return normalDeliveries;
 }
 
-const list<ExpressDelivery> &Company::getExpressDeliveries() const {
+list<ExpressDelivery> &Company::getExpressDeliveries(){
     return expressDeliveries;
 }
 
