@@ -53,19 +53,40 @@ int Scenario1::final(vector<NormalDelivery> orders, vector<Driver> drivers) {
 
     sort(orders.begin(), orders.end(), Scenario1::sorting_package_volume);
     int ans1 = Scenario1::DriverCount(orders,drivers);
-
     sort(orders.begin(),  orders.end(), Scenario1::sorting_package_weight);
     int ans2 = Scenario1::DriverCount(orders,drivers);
-
-    sort(drivers.begin(),drivers.end(), Scenario1::sorting_driver_weight);
+    sort(orders.begin(),  orders.end(), Scenario1::sorting_package_addition);
     int ans3 = Scenario1::DriverCount(orders,drivers);
 
-    sort(orders.begin(),  orders.end(), Scenario1::sorting_package_volume);
+    sort(drivers.begin(),drivers.end(), Scenario1::sorting_driver_weight);
+
+    sort(orders.begin(), orders.end(), Scenario1::sorting_package_volume);
     int ans4 = Scenario1::DriverCount(orders,drivers);
+    sort(orders.begin(),  orders.end(), Scenario1::sorting_package_weight);
+    int ans5 = Scenario1::DriverCount(orders,drivers);
+    sort(orders.begin(),  orders.end(), Scenario1::sorting_package_addition);
+    int ans6 = Scenario1::DriverCount(orders,drivers);
+
+    sort(drivers.begin(),drivers.end(), Scenario1::sorting_driver_addition);
+
+    sort(orders.begin(), orders.end(), Scenario1::sorting_package_volume);
+    int ans7 = Scenario1::DriverCount(orders,drivers);
+    sort(orders.begin(),  orders.end(), Scenario1::sorting_package_weight);
+    int ans8 = Scenario1::DriverCount(orders,drivers);
+    sort(orders.begin(),  orders.end(), Scenario1::sorting_package_addition);
+    int ans9 = Scenario1::DriverCount(orders,drivers);
+
+    int min1 = min(ans1,ans2);
+    int min2 = min(ans3,ans4);
+    int min3 = min(ans5,ans6);
+    int min4 = min(ans7,ans8);
+    int min5 = min(ans9, min1);
+    int min6 = min(min5, min2);
+    int min7 = min(min3, min4);
 
     //cout << ans1 << endl << ans2 << endl;
 
-    return min(min(ans1,ans2),min(ans3,ans4));
+    return min(min6,min7);
 }
 
 bool Scenario1::sorting_driver_weight(Driver d1, Driver d2) {
@@ -76,12 +97,20 @@ bool Scenario1::sorting_driver_volume(Driver d1, Driver d2) {
     return d1.getMaxVolume() > d2.getMaxVolume();
 }
 
+bool Scenario1::sorting_driver_addition(Driver d1, Driver d2) {
+    return d1.getMaxVolume()+d1.getMaxWeight() > d2.getMaxVolume()+d2.getMaxWeight();
+}
+
 bool Scenario1::sorting_package_weight(NormalDelivery n1, NormalDelivery n2) {
     return n1.getWeight() > n2.getWeight();
 }
 
 bool Scenario1::sorting_package_volume(NormalDelivery n1, NormalDelivery n2) {
     return n1.getVolume() > n2.getVolume();
+}
+
+bool Scenario1::sorting_package_addition(NormalDelivery n1, NormalDelivery n2) {
+    return n1.getVolume()+n1.getWeight() > n2.getVolume()+n2.getWeight();
 }
 
 bool Scenario1::packagesFit() {

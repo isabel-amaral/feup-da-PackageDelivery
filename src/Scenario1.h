@@ -16,8 +16,10 @@ public:
     int final(vector<NormalDelivery> orders, vector<Driver> drivers);
     static bool sorting_driver_weight(Driver d1, Driver d2);
     static bool sorting_driver_volume(Driver d1, Driver d2);
+    static bool sorting_driver_addition(Driver d1, Driver d2);
     static bool sorting_package_weight(NormalDelivery n1, NormalDelivery n2);
     static bool sorting_package_volume(NormalDelivery n1, NormalDelivery n2);
+    static bool sorting_package_addition(NormalDelivery n1, NormalDelivery n2);
     bool packagesFit();
 };
 
