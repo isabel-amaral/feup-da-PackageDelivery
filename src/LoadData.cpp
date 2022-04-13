@@ -1,21 +1,24 @@
-//
-// Created by ASUS on 06/04/2022.
-//
-
 #include "LoadData.h"
+LoadData::LoadData() {
 
-LoadData::LoadData(const Company &company, const string &driversFilename, const string &normalDelFilename, const string &expressDelFilename) {
+}
+
+LoadData::LoadData(Company *company) {
+    this->company = company;
+}
+/*
+LoadData::LoadData(Company *company, const string &driversFilename, const string &normalDelFilename, const string &expressDelFilename) {
     this->company = company;
     loadDrivers(driversFilename);
     loadNormalDeliveries(normalDelFilename);
     loadExpressDeliveries(expressDelFilename);
-}
-
+}*/
+/*
 const Company& LoadData::getCompany() const {
     return company;
-}
+}*/
 
-void LoadData::loadDrivers(const string &driversFilename) {
+bool LoadData::loadDrivers(const string &driversFilename) {
     ifstream f;
     string text, tempText;
     int maxVol, maxWeight, cost;
@@ -23,7 +26,7 @@ void LoadData::loadDrivers(const string &driversFilename) {
     f.open(driversFilename);
     if (!f.is_open()) {
         cout << "File does not exist." << endl;
-        return;
+        return false;
     }
 
     f.ignore(LONG_MAX, '\n');
@@ -38,12 +41,13 @@ void LoadData::loadDrivers(const string &driversFilename) {
         cost = stoi(tempText);
 
         Driver driver(maxWeight, maxVol, cost); 
-        this->company.addDriver(driver);
+        this->company->addDriver(driver);
     }
     f.close();
+    return true;
 }
 
-void LoadData::loadNormalDeliveries(const string &normalDelFilename) {
+bool LoadData::loadNormalDeliveries(const string &normalDelFilename) {
     ifstream f;
     string text, tempText;
     int vol, weight, fee;
@@ -51,7 +55,7 @@ void LoadData::loadNormalDeliveries(const string &normalDelFilename) {
     f.open(normalDelFilename);
     if (!f.is_open()) {
         cout << "File does not exist." << endl;
-        return;
+        return false;
     }
 
     f.ignore(LONG_MAX, '\n');
@@ -66,12 +70,13 @@ void LoadData::loadNormalDeliveries(const string &normalDelFilename) {
         fee = stoi(tempText);
 
         NormalDelivery normalDelivery(vol, weight, fee);
-        this->company.addNormalDelivery(normalDelivery);
+        this->company->addNormalDelivery(normalDelivery);
     }
     f.close();
+    return true;
 }
 
-void LoadData::loadExpressDeliveries(const string &expressDelFilename){
+bool LoadData::loadExpressDeliveries(const string &expressDelFilename){
     ifstream f;
     string text, tempText;
     int vol, weight, fee, estimatedTime;
@@ -79,7 +84,7 @@ void LoadData::loadExpressDeliveries(const string &expressDelFilename){
     f.open(expressDelFilename);
     if (!f.is_open()) {
         cout << "File does not exist." << endl;
-        return;
+        return false;
     }
 
     f.ignore(LONG_MAX, '\n');
@@ -90,10 +95,14 @@ void LoadData::loadExpressDeliveries(const string &expressDelFilename){
         estimatedTime = stoi(tempText);
 
         ExpressDelivery expressDelivery(estimatedTime);
-        this->company.addExpressDelivery(expressDelivery);
+        this->company->addExpressDelivery(expressDelivery);
     }
     f.close();
+    return true;
 }
+
+
+
 
 
 
