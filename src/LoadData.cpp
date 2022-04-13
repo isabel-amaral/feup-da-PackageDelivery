@@ -87,15 +87,9 @@ void LoadData::loadExpressDeliveries(const string &expressDelFilename){
         stringstream s(text);
 
         getline (s, tempText, ' ');
-        vol = stoi(tempText);
-        getline (s, tempText, ' ');
-        weight = stoi(tempText);
-        getline (s, tempText, ' ');
-        fee = stoi(tempText);
-        getline (s, tempText, ' ');
         estimatedTime = stoi(tempText);
 
-        ExpressDelivery expressDelivery(vol, weight, fee, estimatedTime);
+        ExpressDelivery expressDelivery(estimatedTime);
         this->company.addExpressDelivery(expressDelivery);
     }
     f.close();
