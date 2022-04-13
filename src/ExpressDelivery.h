@@ -4,14 +4,8 @@
 class ExpressDelivery {
     int estimatedDeliveryTime;
 public:
-    ExpressDelivery(int v, int w, int fee, int edt);
-    int getVolume() const;
-    int getWeight() const;
-    int getDeliveryFee() const;
+    ExpressDelivery(int edt);
     int getEstimatedDeliveryTime() const;
-    void setVolume(int vol);
-    void setWeight(int wei);
-    void setDeliveryFee(int fee);
     void setEstimatedDeliveryTime(int edt);
 };
 

@@ -1,6 +1,6 @@
 #include "ExpressDelivery.h"
 
-ExpressDelivery::ExpressDelivery(int v, int w, int fee, int edt) {
+ExpressDelivery::ExpressDelivery(int edt) {
     estimatedDeliveryTime = edt;
 }
 
