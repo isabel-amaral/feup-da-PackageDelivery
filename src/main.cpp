@@ -1,5 +1,4 @@
 #include <iostream>
-#include <algorithm>
 #include "Company.h"
 #include "LoadData.h"
 #include "Scenario1.h"

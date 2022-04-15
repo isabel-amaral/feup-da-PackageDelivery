@@ -14,7 +14,7 @@ int Scenario1::run() {
     return final(company.getNormalDeliveries(),company.getDrivers());
 }
 
-int Scenario1::DriverCount(vector<NormalDelivery> orders, vector<Driver> drivers) {
+vector<int> Scenario1::DriverCount(vector<NormalDelivery> orders, vector<Driver> drivers) {
     int missing = 0;
     int ans = 1;
 
@@ -44,49 +44,57 @@ int Scenario1::DriverCount(vector<NormalDelivery> orders, vector<Driver> drivers
         }
     }
     //cout << "There were " << missing << " packages that didn't fit" << endl;
-    return ans;
+    vector<int> v1;
+    v1.push_back(ans);
+    v1.push_back(missing);
+    return v1;
 }
 
 int Scenario1::final(vector<NormalDelivery> orders, vector<Driver> drivers) {
+    vector<vector<int>> v1;
 
     sort(drivers.begin(),drivers.end(), Scenario1::sorting_driver_volume);
 
     sort(orders.begin(), orders.end(), Scenario1::sorting_package_volume);
-    int ans1 = Scenario1::DriverCount(orders,drivers);
+    v1.push_back(Scenario1::DriverCount(orders,drivers));
     sort(orders.begin(),  orders.end(), Scenario1::sorting_package_weight);
-    int ans2 = Scenario1::DriverCount(orders,drivers);
+    v1.push_back(Scenario1::DriverCount(orders,drivers));
     sort(orders.begin(),  orders.end(), Scenario1::sorting_package_addition);
-    int ans3 = Scenario1::DriverCount(orders,drivers);
+    v1.push_back(Scenario1::DriverCount(orders,drivers));
 
     sort(drivers.begin(),drivers.end(), Scenario1::sorting_driver_weight);
 
     sort(orders.begin(), orders.end(), Scenario1::sorting_package_volume);
-    int ans4 = Scenario1::DriverCount(orders,drivers);
+    v1.push_back(Scenario1::DriverCount(orders,drivers));
     sort(orders.begin(),  orders.end(), Scenario1::sorting_package_weight);
-    int ans5 = Scenario1::DriverCount(orders,drivers);
+    v1.push_back(Scenario1::DriverCount(orders,drivers));
     sort(orders.begin(),  orders.end(), Scenario1::sorting_package_addition);
-    int ans6 = Scenario1::DriverCount(orders,drivers);
+    v1.push_back(Scenario1::DriverCount(orders,drivers));
 
     sort(drivers.begin(),drivers.end(), Scenario1::sorting_driver_addition);
 
     sort(orders.begin(), orders.end(), Scenario1::sorting_package_volume);
-    int ans7 = Scenario1::DriverCount(orders,drivers);
+    v1.push_back(Scenario1::DriverCount(orders,drivers));
     sort(orders.begin(),  orders.end(), Scenario1::sorting_package_weight);
-    int ans8 = Scenario1::DriverCount(orders,drivers);
+    v1.push_back(Scenario1::DriverCount(orders,drivers));
     sort(orders.begin(),  orders.end(), Scenario1::sorting_package_addition);
-    int ans9 = Scenario1::DriverCount(orders,drivers);
+    v1.push_back(Scenario1::DriverCount(orders,drivers));
 
-    int min1 = min(ans1,ans2);
-    int min2 = min(ans3,ans4);
-    int min3 = min(ans5,ans6);
-    int min4 = min(ans7,ans8);
-    int min5 = min(ans9, min1);
-    int min6 = min(min5, min2);
-    int min7 = min(min3, min4);
+    //sort(v1.begin(),  v1.end(), Scenario1::sorting_by_missing);
 
     //cout << ans1 << endl << ans2 << endl;
 
-    return min(min6,min7);
+    int min1 = INT_MAX;
+    int min0 = INT_MAX;
+
+    for (auto i : v1)
+        if (i[0] <= min0 && i[1] <= min1) {
+            min0 = i[0];
+            min1 = i[1];
+            //cout << i[0] << " , " << i[1] << endl;
+        }
+
+    return min0;
 }
 
 bool Scenario1::sorting_driver_weight(Driver d1, Driver d2) {
@@ -132,4 +140,10 @@ bool Scenario1::packagesFit() {
     if (total_package_weight > total_driver_weight || total_package_volume > total_driver_volume)
         return false;
     return true;
+}
+
+bool Scenario1::sorting_by_missing(const vector<int> &v1, const vector<int> &v2) {
+    if (v1[1]==v2[1])
+        return v1[0]>v2[0];
+    return v1[1]>v2[1];
 }
