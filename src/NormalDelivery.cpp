@@ -29,3 +29,7 @@ void NormalDelivery::setWeight(int wei) {
 void NormalDelivery::setDeliveryFee(int fee) {
     deliveryFee = fee;
 }
+
+bool NormalDelivery::compareFee(const NormalDelivery &a, const NormalDelivery &b) {
+    return a.deliveryFee > b.deliveryFee;
+}
