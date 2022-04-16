@@ -11,3 +11,7 @@ int ExpressDelivery::getEstimatedDeliveryTime() const {
 void ExpressDelivery::setEstimatedDeliveryTime(int edt) {
     estimatedDeliveryTime = edt;
 }
+
+bool ExpressDelivery::compareExpressDeliveries(const ExpressDelivery& a, const ExpressDelivery& b) {
+    return a.getEstimatedDeliveryTime() < b.getEstimatedDeliveryTime();
+}
