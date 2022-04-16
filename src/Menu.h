@@ -2,6 +2,7 @@
 #define FEUP_DA_PACKAGEDELIVERY_MENU_H
 
 #include <iostream>
+#include <string>
 #include <stack>
 #include "LoadData.h"
 
@@ -17,7 +18,7 @@ public:
     void readOption(const unsigned& minOption, const unsigned& maxOption);
     void processOption();
     void menu0();
-    void menu1(int normalDelscenery);
+    void menu1(int normalDelScenery);
     void menu3();
 };
 

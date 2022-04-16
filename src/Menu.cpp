@@ -78,11 +78,17 @@ void Menu::menu1(int normalDelscenery) {
 
     cout << "Insira o nome do ficheiro dos drivers: (0 - Voltar)" << endl;
     getline(cin, driversFile);
-    if (driversFile == "0") menu0();
+    if (driversFile == "0")
+        menu0();
+    else
+        driversFile += ".txt";
 
     cout << "Insira o nome do ficheiro das encomendas normais: (0 - Voltar)" << endl;
     getline(cin, normalDelFile);
-    if (normalDelFile == "0") menu0();
+    if (normalDelFile == "0")
+        menu0();
+    else
+        normalDelFile += ".txt";
 
     company.getDrivers().clear();
     company.getNormalDeliveries().clear();
@@ -91,7 +97,7 @@ void Menu::menu1(int normalDelscenery) {
     if (loadData.loadDrivers(driversFile) && loadData.loadNormalDeliveries(normalDelFile)){
         if (normalDelscenery == 1) company.scenery1();
         else company.scenery2();
-     }*/
+    }*/
 
     cout << endl;
     option = lastMenu.top();
@@ -104,7 +110,10 @@ void Menu::menu3() {
 
     cout << "Insira o nome do ficheiro das encomendas expresso: (0 - Voltar)" << endl;
     getline(cin, expressDelFile);
-    if (expressDelFile == "0") menu0();
+    if (expressDelFile == "0")
+        menu0();
+    else
+        expressDelFile += ".txt";
 
     company.getExpressDeliveries().clear();
     if (loadData.loadExpressDeliveries(expressDelFile)) company.scenery3();
