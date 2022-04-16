@@ -27,6 +27,9 @@ public:
     void setDeliveryCost(int deliveryCost);
     void setOrdersToDeliver(const list<NormalDelivery> &ordersToDeliver);
     bool addOrder(const NormalDelivery& order);
+    static bool sorting_driver_weight(Driver d1, Driver d2);
+    static bool sorting_driver_volume(Driver d1, Driver d2);
+    static bool sorting_driver_addition(Driver d1, Driver d2);
 };
 
 #endif //FEUP_DA_PACKAGEDELIVERY_DRIVER_H

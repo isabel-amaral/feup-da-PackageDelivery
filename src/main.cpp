@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Company.h"
 #include "LoadData.h"
-#include "Scenario1.h"
 
 using namespace std;
 
@@ -12,6 +11,6 @@ int main(){
     string e = "expressDel.txt";
     LoadData loadData(company, d, n, e);
     company = loadData.getCompany();
-    Scenario1 s1(company);
+    company.scenery1();
     cout << "HEllo" << endl;
 }

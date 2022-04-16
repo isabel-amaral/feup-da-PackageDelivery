@@ -2,8 +2,11 @@
 #define FEUP_DA_PACKAGEDELIVERY_COMPANY_H
 
 #include <vector>
+#include <algorithm>
+#include <iostream>
 #include "Driver.h"
 #include "ExpressDelivery.h"
+#include "NormalDelivery.h"
 
 
 using namespace std;
@@ -29,6 +32,10 @@ public:
     void updateProfit (const int& profit);
     void deliverNormalDelivery(const NormalDelivery& normalDelivery);
     void deliverExpressDelivery(const ExpressDelivery& expressDelivery); //TODO: decidir se é necessario
+
+    /*________________scenery1_____________*/
+    void scenery1();
+    vector<int> DriverCount();
 };
 
 
