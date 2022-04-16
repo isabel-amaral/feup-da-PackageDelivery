@@ -61,7 +61,7 @@ void Company::deliverExpressDelivery(const ExpressDelivery &expressDelivery) {
 }
 
 void Company::scenery1() {
-    vector<vector<int>> v1;
+    list<pair<int,int>> v1;
 
     sort(drivers.begin(),drivers.end(), Driver::sorting_driver_volume);
 
@@ -92,22 +92,36 @@ void Company::scenery1() {
 
     //sort(v1.begin(),  v1.end(), Scenario1::sorting_by_missing);
 
+    //v1.sort([](const pair<int,int> & a, const pair<int,int> & b) { return a.first < b.first; });
+    v1.sort(Company::sorting_by_missing);
+
     //cout << ans1 << endl << ans2 << endl;
 
+    /*
     int min1 = INT_MAX;
     int min0 = INT_MAX;
 
-    for (auto i : v1)
-        if (i[0] <= min0 && i[1] <= min1) {
+    list<list<int>>::iterator it;
+    for (it = v1.begin(); it != v1.end(); ++it) {
+        if (*it[0] <= min0 && it[1] <= min1) {
             min0 = i[0];
             min1 = i[1];
-            //cout << i[0] << " , " << i[1] << endl;
+            cout << i[0] << " , " << i[1] << endl;
         }
+    }
+     */
 
-    cout << min0 << endl;
+    for (const auto& paire : v1) {
+        cout << paire.first << " , " << paire.second << endl;
+    }
+    if (v1.front().second > 0)
+        cout << "There are " << v1.front().first << " drivers needed to carry all the packages, although " << v1.front().second << " packages didn't fit." << endl;
+    else {
+        cout << "There are " << v1.front().first << " drivers needed to carry all the packages." << endl;
+    }
 }
 
-vector<int> Company::DriverCount() {
+pair<int,int> Company::DriverCount() {
     int missing = 0;
     int ans = 1;
 
@@ -137,8 +151,14 @@ vector<int> Company::DriverCount() {
         }
     }
     //cout << "There were " << missing << " packages that didn't fit" << endl;
-    vector<int> v1;
-    v1.push_back(ans);
-    v1.push_back(missing);
+    pair<int,int> v1;
+    v1.first = ans;
+    v1.second = missing;
     return v1;
+}
+
+bool Company::sorting_by_missing(const pair<int,int> &v1, const pair<int,int> &v2) {
+    if (v1.second==v2.second)
+        return v1.first<v2.first;
+    return v1.second<v2.second;
 }

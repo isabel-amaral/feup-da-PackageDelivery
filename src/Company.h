@@ -35,7 +35,8 @@ public:
 
     /*________________scenery1_____________*/
     void scenery1();
-    vector<int> DriverCount();
+    pair<int,int> DriverCount();
+    static bool sorting_by_missing(const pair<int, int> &v1, const pair<int, int> &v2);
 };
 
 
