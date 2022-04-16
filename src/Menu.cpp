@@ -116,7 +116,8 @@ void Menu::menu3() {
         expressDelFile += ".txt";
 
     company.getExpressDeliveries().clear();
-    if (loadData.loadExpressDeliveries(expressDelFile)) company.scenery3();
+    if (loadData.loadExpressDeliveries(expressDelFile))
+        company.scenery3();
 
     cout << endl;
     option = lastMenu.top();

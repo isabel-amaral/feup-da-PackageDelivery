@@ -82,7 +82,7 @@ void Company::scenery3() {
     bool outOfTime = false;
 
     expressDeliveries.sort(compareExpressDeliveries);
-    while (!outOfTime) {
+    while (!outOfTime && !expressDeliveries.empty()) {
         ExpressDelivery e = expressDeliveries.front();
         expressDeliveries.pop_front();
         if (timeUsed + e.getEstimatedDeliveryTime() > timeToDeliver)

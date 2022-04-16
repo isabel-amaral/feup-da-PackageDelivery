@@ -90,9 +90,7 @@ bool LoadData::loadExpressDeliveries(const string &expressDelFilename){
     f.ignore(LONG_MAX, '\n');
     while (getline(f, text)){
         stringstream s(text);
-
-        getline (s, tempText, ' ');
-        estimatedTime = stoi(tempText);
+        estimatedTime = stoi(text);
 
         ExpressDelivery expressDelivery(estimatedTime);
         this->company->addExpressDelivery(expressDelivery);
