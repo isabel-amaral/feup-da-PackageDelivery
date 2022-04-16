@@ -58,6 +58,7 @@ bool LoadData::loadNormalDeliveries(const string &normalDelFilename) {
         return false;
     }
 
+    company->setProfit(0);
     f.ignore(LONG_MAX, '\n');
     while (getline(f, text)) {
         stringstream s(text);
