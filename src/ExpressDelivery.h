@@ -2,20 +2,12 @@
 #define FEUP_DA_PACKAGEDELIVERY_EXPRESSDELIVERY_H
 
 class ExpressDelivery {
-    int volume;
-    int weight;
-    int deliveryFee;
     int estimatedDeliveryTime;
 public:
-    ExpressDelivery(int v, int w, int fee, int edt);
-    int getVolume() const;
-    int getWeight() const;
-    int getDeliveryFee() const;
-    int getEstimatedDeliveryTime();
-    void setVolume(int vol);
-    void setWeight(int wei);
-    void setDeliveryFee(int fee);
+    ExpressDelivery(int edt);
+    int getEstimatedDeliveryTime() const;
     void setEstimatedDeliveryTime(int edt);
+    static bool compareExpressDeliveries(const ExpressDelivery& a, const ExpressDelivery& b);
 };
 
 

@@ -4,15 +4,15 @@ Company::Company() {
     this->profit = 0;
 }
 
-const vector<Driver> &Company::getDrivers() const {
+list<Driver> Company::getDrivers() {
     return drivers;
 }
 
-const vector<NormalDelivery> &Company::getNormalDeliveries() const {
+list<NormalDelivery> &Company::getNormalDeliveries(){
     return normalDeliveries;
 }
 
-const vector<ExpressDelivery> &Company::getExpressDeliveries() const {
+list<ExpressDelivery> &Company::getExpressDeliveries(){
     return expressDeliveries;
 }
 
@@ -20,15 +20,15 @@ int Company::getProfit() const {
     return profit;
 }
 
-void Company::setDrivers(const vector<Driver> &drivers) {
+void Company::setDrivers(const list<Driver> &drivers) {
     Company::drivers = drivers;
 }
 
-void Company::setNormalDeliveries(const vector<NormalDelivery> &normalDeliveries) {
+void Company::setNormalDeliveries(const list<NormalDelivery> &normalDeliveries) {
     this->normalDeliveries = normalDeliveries;
 }
 
-void Company::setExpressDeliveries(const vector<ExpressDelivery> &expressDeliveries) {
+void Company::setExpressDeliveries(const list<ExpressDelivery> &expressDeliveries) {
     this->expressDeliveries = expressDeliveries;
 }
 
@@ -63,53 +63,34 @@ void Company::deliverExpressDelivery(const ExpressDelivery &expressDelivery) {
 void Company::scenery1() {
     list<pair<int,int>> v1;
 
-    sort(drivers.begin(),drivers.end(), Driver::sorting_driver_volume);
+    drivers.sort(Driver::sorting_driver_volume);
 
-    sort(normalDeliveries.begin(), normalDeliveries.end(), NormalDelivery::sorting_package_volume);
+    normalDeliveries.sort(NormalDelivery::sorting_package_volume);
     v1.push_back(Company::DriverCount());
-    sort(normalDeliveries.begin(),  normalDeliveries.end(), NormalDelivery::sorting_package_weight);
+    normalDeliveries.sort(NormalDelivery::sorting_package_weight);
     v1.push_back(Company::DriverCount());
-    sort(normalDeliveries.begin(),  normalDeliveries.end(), NormalDelivery::sorting_package_addition);
-    v1.push_back(Company::DriverCount());
-
-    sort(drivers.begin(),drivers.end(), Driver::sorting_driver_weight);
-
-    sort(normalDeliveries.begin(), normalDeliveries.end(), NormalDelivery::sorting_package_volume);
-    v1.push_back(Company::DriverCount());
-    sort(normalDeliveries.begin(),  normalDeliveries.end(), NormalDelivery::sorting_package_weight);
-    v1.push_back(Company::DriverCount());
-    sort(normalDeliveries.begin(),  normalDeliveries.end(), NormalDelivery::sorting_package_addition);
+    normalDeliveries.sort(NormalDelivery::sorting_package_addition);
     v1.push_back(Company::DriverCount());
 
-    sort(drivers.begin(),drivers.end(), Driver::sorting_driver_addition);
+    drivers.sort(Driver::sorting_driver_weight);
 
-    sort(normalDeliveries.begin(), normalDeliveries.end(), NormalDelivery::sorting_package_volume);
+    normalDeliveries.sort(NormalDelivery::sorting_package_volume);
     v1.push_back(Company::DriverCount());
-    sort(normalDeliveries.begin(),  normalDeliveries.end(), NormalDelivery::sorting_package_weight);
+    normalDeliveries.sort(NormalDelivery::sorting_package_weight);
     v1.push_back(Company::DriverCount());
-    sort(normalDeliveries.begin(),  normalDeliveries.end(), NormalDelivery::sorting_package_addition);
+    normalDeliveries.sort(NormalDelivery::sorting_package_addition);
     v1.push_back(Company::DriverCount());
 
-    //sort(v1.begin(),  v1.end(), Scenario1::sorting_by_missing);
+    drivers.sort(Driver::sorting_driver_addition);
 
-    //v1.sort([](const pair<int,int> & a, const pair<int,int> & b) { return a.first < b.first; });
+    normalDeliveries.sort(NormalDelivery::sorting_package_volume);
+    v1.push_back(Company::DriverCount());
+    normalDeliveries.sort(NormalDelivery::sorting_package_weight);
+    v1.push_back(Company::DriverCount());
+    normalDeliveries.sort(NormalDelivery::sorting_package_addition);
+    v1.push_back(Company::DriverCount());
+
     v1.sort(Company::sorting_by_missing);
-
-    //cout << ans1 << endl << ans2 << endl;
-
-    /*
-    int min1 = INT_MAX;
-    int min0 = INT_MAX;
-
-    list<list<int>>::iterator it;
-    for (it = v1.begin(); it != v1.end(); ++it) {
-        if (*it[0] <= min0 && it[1] <= min1) {
-            min0 = i[0];
-            min1 = i[1];
-            cout << i[0] << " , " << i[1] << endl;
-        }
-    }
-     */
 
     for (const auto& paire : v1) {
         cout << paire.first << " , " << paire.second << endl;
@@ -126,23 +107,23 @@ pair<int,int> Company::DriverCount() {
     int ans = 1;
 
     vector<Driver> remaining;
-    remaining.push_back(drivers[0]);
+    remaining.push_back(drivers.front());
 
-    for (int i = 0; i < normalDeliveries.size(); i++) {
+    for (NormalDelivery delivery : normalDeliveries) {
         int j;
         for (j = 0; j < remaining.size(); j++) {
-            if ((normalDeliveries[i].getWeight() <= remaining[j].getMaxWeight()) && (normalDeliveries[i].getVolume() <= remaining[j].getMaxVolume())) {
-                remaining[j].setMaxWeight(remaining[j].getMaxWeight()-normalDeliveries[i].getWeight());
-                remaining[j].setMaxVolume(remaining[j].getMaxVolume()-normalDeliveries[i].getVolume());
+            if ((delivery.getWeight() <= remaining[j].getMaxWeight()) && (delivery.getVolume() <= remaining[j].getMaxVolume())) {
+                remaining[j].setMaxWeight(remaining[j].getMaxWeight()-delivery.getWeight());
+                remaining[j].setMaxVolume(remaining[j].getMaxVolume()-delivery.getVolume());
                 break;
             }
         }
 
         if (j == ans) {
-            if(drivers[ans].getMaxWeight()-normalDeliveries[i].getWeight() >= 0 && drivers[ans].getMaxVolume()-normalDeliveries[i].getVolume() >= 0) {
-                drivers[ans].setMaxWeight(drivers[ans].getMaxWeight()-normalDeliveries[i].getWeight());
-                drivers[ans].setMaxVolume(drivers[ans].getMaxVolume()-normalDeliveries[i].getVolume());
-                remaining.push_back(drivers[ans]);
+            if(get(drivers,ans).getMaxWeight()-delivery.getWeight() >= 0 && get(drivers,ans).getMaxVolume()-delivery.getVolume() >= 0) {
+                get(drivers,ans).setMaxWeight(get(drivers,ans).getMaxWeight()-delivery.getWeight());
+                get(drivers,ans).setMaxVolume(get(drivers,ans).getMaxVolume()-delivery.getVolume());
+                remaining.push_back(get(drivers,ans));
                 ans++;
             }
             else {
@@ -150,7 +131,7 @@ pair<int,int> Company::DriverCount() {
             }
         }
     }
-    //cout << "There were " << missing << " packages that didn't fit" << endl;
+
     pair<int,int> v1;
     v1.first = ans;
     v1.second = missing;
@@ -161,4 +142,47 @@ bool Company::sorting_by_missing(const pair<int,int> &v1, const pair<int,int> &v
     if (v1.second==v2.second)
         return v1.first<v2.first;
     return v1.second<v2.second;
+}
+/*____________cenário 3____________*/
+void Company::printResults() {
+    int totalTimeSpent = 0;
+    double average_time;
+
+    for (ExpressDelivery e: delivered)
+        totalTimeSpent += e.getEstimatedDeliveryTime();
+    average_time = (double) totalTimeSpent / delivered.size();
+
+    cout << "No maximo sera possivel entregar " << delivered.size() << " encomendas." << endl;
+    cout << "Nas entregas deste dia serao gastas " << (double) totalTimeSpent / 3600 << " horas." << endl;
+    cout << "Em media serao gastos " << (double) average_time / 60 << " minutos por encomenda." << endl << endl;
+}
+
+void Company::scenery3() {
+    delivered.clear();
+    const int START_TIME = 9, END_TIME = 17;
+    // number of work seconds in a day
+    const int timeToDeliver = (END_TIME - START_TIME)*3600;
+    int timeUsed = 0;
+    bool outOfTime = false;
+
+    expressDeliveries.sort(ExpressDelivery::compareExpressDeliveries);
+    while (!outOfTime && !expressDeliveries.empty()) {
+        ExpressDelivery e = expressDeliveries.front();
+        expressDeliveries.pop_front();
+        if (timeUsed + e.getEstimatedDeliveryTime() > timeToDeliver)
+            outOfTime = true;
+        else {
+            delivered.push_back(e);
+            timeUsed += e.getEstimatedDeliveryTime();
+        }
+    }
+    printResults();
+}
+
+Driver Company::get(list<Driver> _list, int _i){
+    list<Driver>::iterator it = _list.begin();
+    for(int i=0; i<_i; i++){
+        ++it;
+    }
+    return *it;
 }

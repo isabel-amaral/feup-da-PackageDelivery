@@ -41,3 +41,7 @@ bool NormalDelivery::sorting_package_volume(NormalDelivery n1, NormalDelivery n2
 bool NormalDelivery::sorting_package_addition(NormalDelivery n1, NormalDelivery n2) {
     return n1.getVolume()+n1.getWeight() > n2.getVolume()+n2.getWeight();
 }
+
+bool NormalDelivery::compareFee(const NormalDelivery &a, const NormalDelivery &b) {
+    return a.deliveryFee > b.deliveryFee;
+}

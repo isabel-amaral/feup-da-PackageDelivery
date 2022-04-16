@@ -51,6 +51,8 @@ bool Driver::addOrder(const NormalDelivery &order) {
         return false;
     if (currentOrderVol + order.getVolume() > maxVolume)
         return false;
+    currentOrderWeight += order.getWeight();
+    currentOrderVol += order.getVolume();
     this->ordersToDeliver.push_back(order);
     return true;
 }
@@ -64,5 +66,15 @@ bool Driver::sorting_driver_volume(Driver d1, Driver d2) {
 }
 
 bool Driver::sorting_driver_addition(Driver d1, Driver d2) {
-    return d1.getMaxVolume()+d1.getMaxWeight() > d2.getMaxVolume()+d2.getMaxWeight();
+    return d1.getMaxVolume() + d1.getMaxWeight() > d2.getMaxVolume() + d2.getMaxWeight();
+}
+
+void Driver::removeOrders() {
+    ordersToDeliver.clear();
+    currentOrderWeight = 0;
+    currentOrderVol = 0;
+}
+
+bool Driver::compareCost(const Driver &a, const Driver &b) {
+    return a.deliveryCost < b.deliveryCost;
 }
