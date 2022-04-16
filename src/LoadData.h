@@ -9,14 +9,16 @@
 #include <iostream>
 class LoadData{
 private:
-    Company company;
-    void loadDrivers(const string& driversFilename);
-    void loadNormalDeliveries(const string& normalDelFilename);
-    void loadExpressDeliveries(const string& expressDelFilename);
+    Company *company;
 
 public:
-    LoadData(const Company &company, const string& driversFilename, const string& normalDelFilename, const string& expressDelFilename);
-    const Company& getCompany() const;
+    LoadData();
+    LoadData(Company *company);
+    //LoadData(Company *company, const string& driversFilename, const string& normalDelFilename, const string& expressDelFilename);
+    bool loadDrivers(const string& driversFilename);
+    bool loadNormalDeliveries(const string& normalDelFilename);
+    bool loadExpressDeliveries(const string& expressDelFilename);
+    //const Company& getCompany() const;
 };
 
 #endif //FEUP_DA_PACKAGEDELIVERY_LOADDATA_H
