@@ -4,6 +4,7 @@ NormalDelivery::NormalDelivery(int v, int w, int fee) {
     volume = v;
     weight = w;
     deliveryFee = fee;
+    priority = 1;
 }
 
 int NormalDelivery::getVolume() const {
@@ -16,6 +17,10 @@ int NormalDelivery::getWeight() const {
 
 int NormalDelivery::getDeliveryFee() const {
     return deliveryFee;
+}
+
+int NormalDelivery::getPriority() const {
+    return priority;
 }
 
 void NormalDelivery::setVolume(int vol) {

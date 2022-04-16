@@ -2,10 +2,15 @@
 
 ExpressDelivery::ExpressDelivery(int edt) {
     estimatedDeliveryTime = edt;
+    priority = 1;
 }
 
 int ExpressDelivery::getEstimatedDeliveryTime() const {
     return estimatedDeliveryTime;
+}
+
+int ExpressDelivery::getPriority() const {
+    return priority;
 }
 
 void ExpressDelivery::setEstimatedDeliveryTime(int edt) {
