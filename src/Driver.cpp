@@ -51,6 +51,13 @@ bool Driver::addOrder(const NormalDelivery &order) {
         return false;
     if (currentOrderVol + order.getVolume() > maxVolume)
         return false;
+    currentOrderWeight += order.getWeight();
+    currentOrderVol += order.getVolume();
     this->ordersToDeliver.push_back(order);
     return true;
 }
+
+bool Driver::compareCost(const Driver &a, const Driver &b) {
+    return a.deliveryCost < b.deliveryCost;
+}
+
