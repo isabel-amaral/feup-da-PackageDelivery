@@ -17,6 +17,10 @@ void ExpressDelivery::setEstimatedDeliveryTime(int edt) {
     estimatedDeliveryTime = edt;
 }
 
+void ExpressDelivery::incrementPriority() {
+    priority++;
+}
+
 bool ExpressDelivery::compareExpressDeliveries(const ExpressDelivery& a, const ExpressDelivery& b) {
     if (a.getPriority() == b.getPriority())
         return a.getEstimatedDeliveryTime() < b.getEstimatedDeliveryTime();

@@ -30,7 +30,7 @@ public:
 
     /*________________scenery3_______________*/
     void scenery3();
-    void printResults();
+    void printResults() const;
 };
 
 

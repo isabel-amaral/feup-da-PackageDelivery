@@ -54,7 +54,7 @@ void Company::updateProfit(const int &profit) {
 }
 
 /*____________cenário 3____________*/
-void Company::printResults() {
+void Company::printResults() const {
     int totalTimeSpent = 0;
     double average_time;
 
@@ -76,6 +76,7 @@ void Company::scenery3() {
     bool outOfTime = false;
 
     expressDeliveries.sort(ExpressDelivery::compareExpressDeliveries);
+
     while (!outOfTime && !expressDeliveries.empty()) {
         ExpressDelivery e = expressDeliveries.front();
         expressDeliveries.pop_front();
@@ -86,5 +87,8 @@ void Company::scenery3() {
             timeUsed += e.getEstimatedDeliveryTime();
         }
     }
+
+    for (ExpressDelivery& e: expressDeliveries)
+        e.incrementPriority();
     printResults();
 }
