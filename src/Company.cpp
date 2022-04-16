@@ -91,10 +91,7 @@ void Company::scenery1() {
     v1.push_back(Company::DriverCount());
 
     v1.sort(Company::sorting_by_missing);
-
-    for (const auto& paire : v1) {
-        cout << paire.first << " , " << paire.second << endl;
-    }
+    
     if (v1.front().second > 0)
         cout << "There are " << v1.front().first << " drivers needed to carry all the packages, although " << v1.front().second << " packages didn't fit." << endl;
     else {
