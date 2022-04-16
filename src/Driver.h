@@ -27,6 +27,7 @@ public:
     void setDeliveryCost(int deliveryCost);
     void setOrdersToDeliver(const list<NormalDelivery> &ordersToDeliver);
     bool addOrder(const NormalDelivery& order);
+    void removeOrders();
     static bool compareCost(const Driver& a, const Driver& b);
 };
 

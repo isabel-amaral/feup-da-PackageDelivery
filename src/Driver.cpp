@@ -57,7 +57,12 @@ bool Driver::addOrder(const NormalDelivery &order) {
     return true;
 }
 
+void Driver::removeOrders() {
+    ordersToDeliver.clear();
+    currentOrderWeight = 0;
+    currentOrderVol = 0;
+}
+
 bool Driver::compareCost(const Driver &a, const Driver &b) {
     return a.deliveryCost < b.deliveryCost;
 }
-
