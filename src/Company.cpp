@@ -68,9 +68,9 @@ void Company::printResults() {
         totalTimeSpent += e.getEstimatedDeliveryTime();
     average_time = (double) totalTimeSpent / delivered.size();
 
-    cout << "No máximo será possível entregar " << delivered.size() << " encomendas." << endl;
-    cout << "Nas entregas deste dia serão gastas " << (double) totalTimeSpent / 3600 << " horas." << endl;
-    cout << "Em média serão gastos " << (double) average_time / 60 << " minutos por encomenda." << endl << endl;
+    cout << "No maximo sera possivel entregar " << delivered.size() << " encomendas." << endl;
+    cout << "Nas entregas deste dia serao gastas " << (double) totalTimeSpent / 3600 << " horas." << endl;
+    cout << "Em media serao gastos " << (double) average_time / 60 << " minutos por encomenda." << endl << endl;
 }
 
 void Company::scenery3() {
