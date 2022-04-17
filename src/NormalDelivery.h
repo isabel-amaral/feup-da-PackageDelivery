@@ -14,6 +14,7 @@ public:
     void setWeight(int wei);
     void setDeliveryFee(int fee);
     static bool compareFee(const NormalDelivery& a, const NormalDelivery& b);
+    bool operator == (const NormalDelivery &delivery) const;
 };
 
 

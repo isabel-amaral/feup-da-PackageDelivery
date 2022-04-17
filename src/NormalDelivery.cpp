@@ -33,3 +33,7 @@ void NormalDelivery::setDeliveryFee(int fee) {
 bool NormalDelivery::compareFee(const NormalDelivery &a, const NormalDelivery &b) {
     return a.deliveryFee > b.deliveryFee;
 }
+
+bool NormalDelivery::operator==(const NormalDelivery &delivery) const {
+    return volume == delivery.volume && weight == delivery.weight && deliveryFee == delivery.deliveryFee;
+}
