@@ -65,29 +65,29 @@ void Company::scenery1() {
 
     drivers.sort(Driver::sorting_driver_volume);
 
-    normalDeliveries.sort(NormalDelivery::sorting_package_volume);
+    normalDeliveries.sort(NormalDelivery::compareVolume);
     v1.push_back(Company::DriverCount());
-    normalDeliveries.sort(NormalDelivery::sorting_package_weight);
+    normalDeliveries.sort(NormalDelivery::compareWeight);
     v1.push_back(Company::DriverCount());
-    normalDeliveries.sort(NormalDelivery::sorting_package_addition);
+    normalDeliveries.sort(NormalDelivery::compareAddition);
     v1.push_back(Company::DriverCount());
 
     drivers.sort(Driver::sorting_driver_weight);
 
-    normalDeliveries.sort(NormalDelivery::sorting_package_volume);
+    normalDeliveries.sort(NormalDelivery::compareVolume);
     v1.push_back(Company::DriverCount());
-    normalDeliveries.sort(NormalDelivery::sorting_package_weight);
+    normalDeliveries.sort(NormalDelivery::compareWeight);
     v1.push_back(Company::DriverCount());
-    normalDeliveries.sort(NormalDelivery::sorting_package_addition);
+    normalDeliveries.sort(NormalDelivery::compareAddition);
     v1.push_back(Company::DriverCount());
 
     drivers.sort(Driver::sorting_driver_addition);
 
-    normalDeliveries.sort(NormalDelivery::sorting_package_volume);
+    normalDeliveries.sort(NormalDelivery::compareVolume);
     v1.push_back(Company::DriverCount());
-    normalDeliveries.sort(NormalDelivery::sorting_package_weight);
+    normalDeliveries.sort(NormalDelivery::compareWeight);
     v1.push_back(Company::DriverCount());
-    normalDeliveries.sort(NormalDelivery::sorting_package_addition);
+    normalDeliveries.sort(NormalDelivery::compareAddition);
     v1.push_back(Company::DriverCount());
 
     v1.sort(Company::sorting_by_missing);

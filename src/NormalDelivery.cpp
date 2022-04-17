@@ -30,15 +30,15 @@ void NormalDelivery::setDeliveryFee(int fee) {
     deliveryFee = fee;
 }
 
-bool NormalDelivery::sorting_package_weight(NormalDelivery n1, NormalDelivery n2) {
+bool NormalDelivery::compareWeight(const NormalDelivery& n1, const NormalDelivery& n2) {
     return n1.getWeight() > n2.getWeight();
 }
 
-bool NormalDelivery::sorting_package_volume(NormalDelivery n1, NormalDelivery n2) {
+bool NormalDelivery::compareVolume(const NormalDelivery& n1, const NormalDelivery& n2) {
     return n1.getVolume() > n2.getVolume();
 }
 
-bool NormalDelivery::sorting_package_addition(NormalDelivery n1, NormalDelivery n2) {
+bool NormalDelivery::compareAddition(const NormalDelivery& n1, const NormalDelivery& n2) {
     return n1.getVolume()+n1.getWeight() > n2.getVolume()+n2.getWeight();
 }
 
