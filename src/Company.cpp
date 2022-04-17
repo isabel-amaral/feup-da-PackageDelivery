@@ -53,7 +53,7 @@ void Company::updateProfit(const int &profit) {
 }
 
 void Company::deliverNormalDelivery(const NormalDelivery &normalDelivery) {
-    //TODO
+    normalDeliveries.remove(normalDelivery);
 }
 
 void Company::deliverExpressDelivery(const ExpressDelivery &expressDelivery) {
