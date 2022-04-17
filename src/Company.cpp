@@ -177,6 +177,7 @@ void Company::printResults() {
     average_time = (double) totalTimeSpent / delivered.size();
 
     cout << "No maximo sera possivel entregar " << delivered.size() << " encomendas." << endl;
+    cout.precision(3);
     cout << "Nas entregas deste dia serao gastas " << (double) totalTimeSpent / 3600 << " horas." << endl;
     cout << "Em media serao gastos " << (double) average_time / 60 << " minutos por encomenda." << endl << endl;
 }
