@@ -93,11 +93,11 @@ void Menu::menu1(int normalDelscenery) {
     company.getDrivers().clear();
     company.getNormalDeliveries().clear();
     //TODO: DESCOMENTAR ISTO
-    /*
+
     if (loadData.loadDrivers(driversFile) && loadData.loadNormalDeliveries(normalDelFile)){
         if (normalDelscenery == 1) company.scenery1();
-        else company.scenery2();
-    }*/
+        //else company.scenery2();
+    }
 
     cout << endl;
     option = lastMenu.top();

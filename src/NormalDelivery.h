@@ -13,6 +13,9 @@ public:
     void setVolume(int vol);
     void setWeight(int wei);
     void setDeliveryFee(int fee);
+    static bool sorting_package_weight(NormalDelivery n1, NormalDelivery n2);
+    static bool sorting_package_volume(NormalDelivery n1, NormalDelivery n2);
+    static bool sorting_package_addition(NormalDelivery n1, NormalDelivery n2);
     static bool compareFee(const NormalDelivery& a, const NormalDelivery& b);
     bool operator == (const NormalDelivery &delivery) const;
 };
