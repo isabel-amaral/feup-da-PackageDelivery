@@ -43,6 +43,7 @@ bool NormalDelivery::sorting_package_addition(NormalDelivery n1, NormalDelivery 
 }
 
 bool NormalDelivery::compareFee(const NormalDelivery &a, const NormalDelivery &b) {
+    //if (a.deliveryFee == b.deliveryFee) return a.weight + a.volume < b.weight + b.volume; TODO: Decidir se deve-se considerar este caso ou não
     return a.deliveryFee > b.deliveryFee;
 }
 
