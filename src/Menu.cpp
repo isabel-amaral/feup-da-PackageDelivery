@@ -92,11 +92,10 @@ void Menu::menu1(int normalDelscenery) {
 
     company.getDrivers().clear();
     company.getNormalDeliveries().clear();
-    //TODO: DESCOMENTAR ISTO
 
-    if (loadData.loadDrivers(driversFile) && loadData.loadNormalDeliveries(normalDelFile)){
+    if (loadData.loadDrivers(driversFile) && loadData.loadNormalDeliveries(normalDelFile)){ //TODO: COMENTARIO COM EXPLICACAO
         if (normalDelscenery == 1) company.scenery1();
-        //else company.scenery2();
+        else company.scenery2();
     }
 
     cout << endl;
@@ -124,4 +123,3 @@ void Menu::menu3() {
     lastMenu.pop();
     processOption();
 }
-
