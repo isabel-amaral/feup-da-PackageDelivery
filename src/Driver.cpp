@@ -76,5 +76,6 @@ void Driver::removeOrders() {
 }
 
 bool Driver::compareCost(const Driver &a, const Driver &b) {
+    //if (a.deliveryCost == b.deliveryCost) return a.maxWeight + a.maxVolume > b.maxWeight + b.maxVolume; TODO: Decidir se deve-se considerar este caso ou não
     return a.deliveryCost < b.deliveryCost;
 }
