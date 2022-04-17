@@ -176,6 +176,57 @@ void Company::scenery3() {
     printResults();
 }
 
+/*____________cenário 2____________*/
+void Company::printResults2(int &numDeliveries) const {
+    cout << "No maximo sera possivel entregar " << numDeliveries << " encomendas." << endl;
+    cout << "A empresa fica com um lucro de " << profit << " euros." << endl;
+}
+void Company::scenery2() {
+    int bestProfit, auxProfit, totalProfit = 0, numDeliveries = 0;
+    bool foundDriver;
+    list<Driver>::iterator bestDriver;
+    list<Driver> copyDrivers = drivers;
+    list<NormalDelivery> copyDeliveries = normalDeliveries;
+
+    normalDeliveries.sort(NormalDelivery::compareFee);
+    drivers.sort(Driver::compareCost);
+
+    do {
+        foundDriver = false;
+        bestProfit = 0;
+        for(auto driver = drivers.begin(); driver != drivers.end(); driver++){
+            auxProfit = totalProfit;
+            for (auto &delivery : normalDeliveries){
+                if (auxProfit + delivery.getDeliveryFee() - driver->getDeliveryCost() >= 0 && driver->addOrder(delivery)){
+                    auxProfit += delivery.getDeliveryFee() - driver->getDeliveryCost();
+                }
+            }
+            if (auxProfit > bestProfit){ //TODO: INCLUIR A CONDICAO DE MAIOR NUMERO DE ENCOMENDAS CASO auxProfit == bestProfit?
+                bestProfit = auxProfit;
+                bestDriver = driver;
+                foundDriver = true;
+            }
+        }
+        if (!foundDriver) continue;
+        totalProfit = bestProfit;
+        numDeliveries += bestDriver->getOrdersToDeliver().size();
+        for (auto &delivery : bestDriver->getOrdersToDeliver()) deliverNormalDelivery(delivery);
+        drivers.erase(bestDriver);
+        for (auto &driver : drivers) driver.removeOrders();
+
+    }while(foundDriver);
+    /*
+    if (!normalDeliveries.empty()){
+        drivers =copyDrivers;
+        normalDeliveries = copyDeliveries;
+        int numDeliveriesScenery1 = scenery1().;
+        if (numDeliveriesScenery1 > numDeliveries) numDeliveries = numDeliveriesScenery1;
+        else profit = totalProfit;
+    }*/
+    profit = totalProfit;
+    printResults2(numDeliveries);
+}
+
 Driver Company::get(list<Driver> _list, int _i){
     list<Driver>::iterator it = _list.begin();
     for(int i=0; i<_i; i++){

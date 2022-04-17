@@ -34,11 +34,15 @@ public:
     void deliverNormalDelivery(const NormalDelivery& normalDelivery);
     void deliverExpressDelivery(const ExpressDelivery& expressDelivery); //TODO: decidir se é necessario
 
-    /*________________scenery1_____________*/
+    /*________________scenery1_____________*/ //TODO: FUNCAO PRINT PARA ESTE CENARIO
     void scenery1();
     pair<int,int> DriverCount();
     static bool sorting_by_missing(const pair<int, int> &v1, const pair<int, int> &v2);
     static Driver get(list<Driver> _list, int _i);
+
+    /*________________scenery2_____________*/
+    void scenery2();
+    void printResults2(int &numDeliveries) const;
 
     /*________________scenery3_______________*/
     void scenery3();
