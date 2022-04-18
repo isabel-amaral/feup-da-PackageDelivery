@@ -57,15 +57,15 @@ bool Driver::addOrder(const NormalDelivery &order) {
     return true;
 }
 
-bool Driver::sorting_driver_weight(Driver d1, Driver d2) {
+bool Driver::compareWeight(const Driver &d1, const Driver &d2) {
     return d1.getMaxWeight() > d2.getMaxWeight();
 }
 
-bool Driver::sorting_driver_volume(Driver d1, Driver d2) {
+bool Driver::compareVolume(const Driver &d1, const Driver &d2) {
     return d1.getMaxVolume() > d2.getMaxVolume();
 }
 
-bool Driver::sorting_driver_addition(Driver d1, Driver d2) {
+bool Driver::compareAddition(const Driver &d1, const Driver &d2) {
     return d1.getMaxVolume() + d1.getMaxWeight() > d2.getMaxVolume() + d2.getMaxWeight();
 }
 
