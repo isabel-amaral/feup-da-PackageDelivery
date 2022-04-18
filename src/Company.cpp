@@ -61,7 +61,7 @@ void Company::deliverExpressDelivery(const ExpressDelivery &expressDelivery) {
 }
 
 /*____________cenário 1____________*/
-void Company::scenery1() {
+int Company::scenery1() {
     list<pair<int,int>> v1;
 
     // Different ways of sorting the lists to get best solution
@@ -95,6 +95,7 @@ void Company::scenery1() {
     v1.sort(Company::sorting_by_missing);
 
     printResults1(v1.front().first,v1.front().second);
+    return v1.front().first;
 }
 
 void Company::printResults1(int driver_count, int missing_packages) {
@@ -122,7 +123,7 @@ pair<int,int> Company::DriverCount() {
             if ((delivery.getWeight() <= remaining[j].getMaxWeight()) && (delivery.getVolume() <= remaining[j].getMaxVolume())) {
                 remaining[j].setMaxWeight(remaining[j].getMaxWeight()-delivery.getWeight());
                 remaining[j].setMaxVolume(remaining[j].getMaxVolume()-delivery.getVolume());
-                setProfit(getProfit()+delivery.getDeliveryFee());
+                profit += delivery.getDeliveryFee();
                 break;
             }
         }
@@ -132,7 +133,7 @@ pair<int,int> Company::DriverCount() {
                 get(drivers,ans).setMaxWeight(get(drivers,ans).getMaxWeight()-delivery.getWeight());
                 get(drivers,ans).setMaxVolume(get(drivers,ans).getMaxVolume()-delivery.getVolume());
                 remaining.push_back(get(drivers,ans));
-                setProfit(getProfit()+delivery.getDeliveryFee());
+                profit += delivery.getDeliveryFee();
                 ans++;
             }
             else { // if package doesn't fit in any of available drivers, package cannot be transported
@@ -142,7 +143,7 @@ pair<int,int> Company::DriverCount() {
     }
 
     for (Driver driver : remaining) {
-        setProfit(getProfit()-driver.getDeliveryCost());
+        profit -= driver.getDeliveryCost();
     }
 
     pair<int,int> v1;
@@ -165,6 +166,55 @@ Driver Company::get(list<Driver> _list, int _i){
         ++it;
     }
     return *it;
+}
+
+/*____________cenário 2____________*/
+void Company::printResults2(int &numDeliveries) const {
+    cout << "No maximo sera possivel entregar " << numDeliveries << " encomendas." << endl;
+    cout << "A empresa fica com um lucro de " << profit << " euros." << endl;
+}
+void Company::scenery2() {
+    int bestProfit, auxProfit, totalProfit = 0, numDeliveries = 0;
+    bool foundDriver;
+    list<Driver>::iterator bestDriver;
+    list<Driver> copyDrivers = drivers;
+    list<NormalDelivery> copyDeliveries = normalDeliveries;
+
+    copyDeliveries.sort(NormalDelivery::compareFee);
+    copyDrivers.sort(Driver::compareCost);
+
+    do {
+        foundDriver = false;
+        bestProfit = 0;
+        for(auto driver = copyDrivers.begin(); driver != copyDrivers.end(); driver++){
+            auxProfit = totalProfit;
+            for (auto &delivery : copyDeliveries){
+                if (driver->addOrder(delivery)){
+                    auxProfit += delivery.getDeliveryFee();
+                }
+            }
+            auxProfit -= driver->getDeliveryCost();
+            if (auxProfit > bestProfit && auxProfit > 0){ //TODO: INCLUIR A CONDICAO DE MAIOR NUMERO DE ENCOMENDAS (CASO auxProfit == bestProfit)?
+                bestProfit = auxProfit;
+                bestDriver = driver;
+                foundDriver = true;
+            }
+        }
+        if (!foundDriver) continue;
+        totalProfit = bestProfit;
+        numDeliveries += bestDriver->getOrdersToDeliver().size();
+        for (auto &delivery : bestDriver->getOrdersToDeliver()) deliverNormalDelivery(delivery);
+        copyDrivers.erase(bestDriver);
+        for (auto &driver : copyDrivers) driver.removeOrders();
+
+    }while(foundDriver);
+
+    if (!copyDeliveries.empty()){
+        int numDeliveriesScenery1 = scenery1();
+        if (numDeliveriesScenery1 > numDeliveries) numDeliveries = numDeliveriesScenery1;
+        else profit = totalProfit;
+    }
+    printResults2(numDeliveries);
 }
 
 /*____________cenário 3____________*/
@@ -202,55 +252,4 @@ void Company::scenery3() {
         }
     }
     printResults();
-}
-
-/*____________cenário 2____________*/
-void Company::printResults2(int &numDeliveries) const {
-    cout << "No maximo sera possivel entregar " << numDeliveries << " encomendas." << endl;
-    cout << "A empresa fica com um lucro de " << profit << " euros." << endl;
-}
-void Company::scenery2() {
-    int bestProfit, auxProfit, totalProfit = 0, numDeliveries = 0;
-    bool foundDriver;
-    list<Driver>::iterator bestDriver;
-    list<Driver> copyDrivers = drivers;
-    list<NormalDelivery> copyDeliveries = normalDeliveries;
-
-    normalDeliveries.sort(NormalDelivery::compareFee);
-    drivers.sort(Driver::compareCost);
-
-    do {
-        foundDriver = false;
-        bestProfit = 0;
-        for(auto driver = drivers.begin(); driver != drivers.end(); driver++){
-            auxProfit = totalProfit;
-            for (auto &delivery : normalDeliveries){
-                if (auxProfit + delivery.getDeliveryFee() - driver->getDeliveryCost() >= 0 && driver->addOrder(delivery)){
-                    auxProfit += delivery.getDeliveryFee() - driver->getDeliveryCost();
-                }
-            }
-            if (auxProfit > bestProfit){ //TODO: INCLUIR A CONDICAO DE MAIOR NUMERO DE ENCOMENDAS CASO auxProfit == bestProfit?
-                bestProfit = auxProfit;
-                bestDriver = driver;
-                foundDriver = true;
-            }
-        }
-        if (!foundDriver) continue;
-        totalProfit = bestProfit;
-        numDeliveries += bestDriver->getOrdersToDeliver().size();
-        for (auto &delivery : bestDriver->getOrdersToDeliver()) deliverNormalDelivery(delivery);
-        drivers.erase(bestDriver);
-        for (auto &driver : drivers) driver.removeOrders();
-
-    }while(foundDriver);
-    /*
-    if (!normalDeliveries.empty()){
-        drivers =copyDrivers;
-        normalDeliveries = copyDeliveries;
-        int numDeliveriesScenery1 = scenery1().;
-        if (numDeliveriesScenery1 > numDeliveries) numDeliveries = numDeliveriesScenery1;
-        else profit = totalProfit;
-    }*/
-    profit = totalProfit;
-    printResults2(numDeliveries);
 }

@@ -34,8 +34,8 @@ public:
     void deliverNormalDelivery(const NormalDelivery& normalDelivery);
     void deliverExpressDelivery(const ExpressDelivery& expressDelivery); //TODO: decidir se é necessario
 
-    /*________________scenery1_____________*/ //TODO: FUNCAO PRINT PARA ESTE CENARIO
-    void scenery1();
+    /*________________scenery1_____________*/
+    int scenery1();
     void printResults1(int driver_count, int missing_packages);
     pair<int,int> DriverCount();
     static bool sorting_by_missing(const pair<int, int> &v1, const pair<int, int> &v2);
