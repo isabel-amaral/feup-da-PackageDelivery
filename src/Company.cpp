@@ -65,7 +65,7 @@ int Company::scenery1() {
     list<pair<int,int>> v1;
 
     // Different ways of sorting the lists to get best solution
-    drivers.sort(Driver::sorting_driver_volume);
+    drivers.sort(Driver::compareVolume);
 
     normalDeliveries.sort(NormalDelivery::compareVolume);
     v1.push_back(Company::DriverCount());
@@ -74,7 +74,7 @@ int Company::scenery1() {
     normalDeliveries.sort(NormalDelivery::compareAddition);
     v1.push_back(Company::DriverCount());
 
-    drivers.sort(Driver::sorting_driver_weight);
+    drivers.sort(Driver::compareWeight);
 
     normalDeliveries.sort(NormalDelivery::compareVolume);
     v1.push_back(Company::DriverCount());
@@ -83,7 +83,7 @@ int Company::scenery1() {
     normalDeliveries.sort(NormalDelivery::compareAddition);
     v1.push_back(Company::DriverCount());
 
-    drivers.sort(Driver::sorting_driver_addition);
+    drivers.sort(Driver::compareAddition);
 
     normalDeliveries.sort(NormalDelivery::compareVolume);
     v1.push_back(Company::DriverCount());
@@ -92,7 +92,7 @@ int Company::scenery1() {
     normalDeliveries.sort(NormalDelivery::compareAddition);
     v1.push_back(Company::DriverCount());
 
-    v1.sort(Company::sorting_by_missing);
+    v1.sort(Company::compareMissingDeliveries);
 
     printResults1(v1.front().first,v1.front().second);
     return v1.front().first;
@@ -152,7 +152,7 @@ pair<int,int> Company::DriverCount() {
     return v1;
 }
 
-bool Company::sorting_by_missing(const pair<int,int> &v1, const pair<int,int> &v2) {
+bool Company::compareMissingDeliveries(const pair<int,int> &v1, const pair<int,int> &v2) {
     // sort by number of missing packages, if  the same, by number of drivers necessary, in ascending order
     if (v1.second==v2.second)
         return v1.first<v2.first;

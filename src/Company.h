@@ -38,7 +38,7 @@ public:
     int scenery1();
     void printResults1(int driver_count, int missing_packages);
     pair<int,int> DriverCount();
-    static bool sorting_by_missing(const pair<int, int> &v1, const pair<int, int> &v2);
+    static bool compareMissingDeliveries(const pair<int, int> &v1, const pair<int, int> &v2);
     static Driver get(list<Driver> _list, int _i);
 
     /*________________scenery2_____________*/
