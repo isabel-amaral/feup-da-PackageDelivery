@@ -6,17 +6,6 @@ LoadData::LoadData() {
 LoadData::LoadData(Company *company) {
     this->company = company;
 }
-/*
-LoadData::LoadData(Company *company, const string &driversFilename, const string &normalDelFilename, const string &expressDelFilename) {
-    this->company = company;
-    loadDrivers(driversFilename);
-    loadNormalDeliveries(normalDelFilename);
-    loadExpressDeliveries(expressDelFilename);
-}*/
-/*
-const Company& LoadData::getCompany() const {
-    return company;
-}*/
 
 bool LoadData::loadDrivers(const string &driversFilename) {
     ifstream f;
