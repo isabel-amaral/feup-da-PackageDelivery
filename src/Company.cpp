@@ -95,7 +95,7 @@ int Company::scenery1() {
     v1.sort(Company::compareMissingDeliveries);
 
     printResults1(v1.front().first,v1.front().second);
-    return v1.front().first;
+    return v1.front().second;
 }
 
 void Company::printResults1(int driver_count, int missing_packages) {
@@ -110,7 +110,7 @@ void Company::printResults1(int driver_count, int missing_packages) {
 }
 
 pair<int,int> Company::DriverCount() {
-    setProfit(0);
+    profit = 0;
     int missing = 0; // number of packages which didn't fit with available drivers
     int ans = 1; // number of drivers needed to transport the packages
 
@@ -203,17 +203,19 @@ void Company::scenery2() {
         if (!foundDriver) continue;
         totalProfit = bestProfit;
         numDeliveries += bestDriver->getOrdersToDeliver().size();
-        for (auto &delivery : bestDriver->getOrdersToDeliver()) deliverNormalDelivery(delivery);
+        for (auto &delivery : bestDriver->getOrdersToDeliver()) copyDeliveries.remove(delivery);
         copyDrivers.erase(bestDriver);
         for (auto &driver : copyDrivers) driver.removeOrders();
 
     }while(foundDriver);
 
-    if (!copyDeliveries.empty()){
-        int numDeliveriesScenery1 = scenery1();
-        if (numDeliveriesScenery1 > numDeliveries) numDeliveries = numDeliveriesScenery1;
+    if (!copyDeliveries.empty()) {
+        int remainingDelScenery1 = scenery1();
+        if (remainingDelScenery1 < copyDeliveries.size())
+            numDeliveries = normalDeliveries.size() - remainingDelScenery1;
         else profit = totalProfit;
     }
+    profit = totalProfit;
     printResults2(numDeliveries);
 }
 
