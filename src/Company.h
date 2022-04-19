@@ -17,19 +17,21 @@ class Company {
     list<ExpressDelivery> expressDeliveries;
     list<ExpressDelivery> delivered;
     int profit;
-    string option;
+    struct scenery1Results{
+        int drivers;
+        int remainingPackages;
+        int profit;
+    };
 public:
     Company();
-    list<Driver> getDrivers();
+    list<Driver> &getDrivers();
     list<NormalDelivery> &getNormalDeliveries();
     list<ExpressDelivery> &getExpressDeliveries();
     int getProfit() const;
-    string getOption() const;
     void setDrivers(const list<Driver> &drivers);
     void setNormalDeliveries(const list<NormalDelivery> &normalDeliveries);
     void setExpressDeliveries(const list<ExpressDelivery> &expressDeliveries);
     void setProfit(int profit);
-    void setOption(string option);
     void addDriver(const Driver &driver);
     void addNormalDelivery(const NormalDelivery &normalDelivery);
     void addExpressDelivery(const ExpressDelivery &expressDelivery);
@@ -39,13 +41,9 @@ public:
 
     /*________________scenery1_____________*/
     int scenery1();
+    static void checkBestResult(scenery1Results &result, scenery1Results &currentBestResult);
+    scenery1Results driverCount();
     void printResults1(int driver_count, int missing_packages);
-    pair<int,int> DriverCount();
-    static bool compareMissingDeliveries(const pair<int, int> &v1, const pair<int, int> &v2);
-    static bool compareWastedWeight(const pair<int, int> &v1, const pair<int, int> &v2);
-    static bool compareWastedVolume(const pair<int, int> &v1, const pair<int, int> &v2);
-    static bool compareWastedSpace(const pair<int, int> &v1, const pair<int, int> &v2);
-    static Driver get(list<Driver> _list, int _i);
 
     /*________________scenery2_____________*/
     void scenery2();
@@ -54,7 +52,6 @@ public:
     /*________________scenery3_______________*/
     void scenery3();
     void printResults();
-
 };
 
 

@@ -65,6 +65,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_company-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Company Class Reference</div></div>
@@ -73,9 +74,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aebcbdb1c177c72fed679fe695b687195"><td class="memItemLeft" align="right" valign="top"><a id="aebcbdb1c177c72fed679fe695b687195" name="aebcbdb1c177c72fed679fe695b687195"></a>
-list&lt; <a class="el" href="class_driver.html">Driver</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getDrivers</b> ()</td></tr>
-<tr class="separator:aebcbdb1c177c72fed679fe695b687195"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cedf694baa54e1894026d4ed1b76067"><td class="memItemLeft" align="right" valign="top"><a id="a5cedf694baa54e1894026d4ed1b76067" name="a5cedf694baa54e1894026d4ed1b76067"></a>
+list&lt; <a class="el" href="class_driver.html">Driver</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getDrivers</b> ()</td></tr>
+<tr class="separator:a5cedf694baa54e1894026d4ed1b76067"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5145af31d6acaf3ae8524a0287315354"><td class="memItemLeft" align="right" valign="top"><a id="a5145af31d6acaf3ae8524a0287315354" name="a5145af31d6acaf3ae8524a0287315354"></a>
 list&lt; <a class="el" href="class_normal_delivery.html">NormalDelivery</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getNormalDeliveries</b> ()</td></tr>
 <tr class="separator:a5145af31d6acaf3ae8524a0287315354"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,12 +110,42 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>addExpressDelivery</b
 <tr class="memitem:a5707eaf210854c29aa755fad34754a5c"><td class="memItemLeft" align="right" valign="top"><a id="a5707eaf210854c29aa755fad34754a5c" name="a5707eaf210854c29aa755fad34754a5c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>updateProfit</b> (const int &amp;profit)</td></tr>
 <tr class="separator:a5707eaf210854c29aa755fad34754a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76af0845c381db26a35b89c86049326c"><td class="memItemLeft" align="right" valign="top"><a id="a76af0845c381db26a35b89c86049326c" name="a76af0845c381db26a35b89c86049326c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>deliverNormalDelivery</b> (const <a class="el" href="class_normal_delivery.html">NormalDelivery</a> &amp;normalDelivery)</td></tr>
+<tr class="separator:a76af0845c381db26a35b89c86049326c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36601445a915d1d5b839d930d4571291"><td class="memItemLeft" align="right" valign="top"><a id="a36601445a915d1d5b839d930d4571291" name="a36601445a915d1d5b839d930d4571291"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>deliverExpressDelivery</b> (const <a class="el" href="class_express_delivery.html">ExpressDelivery</a> &amp;expressDelivery)</td></tr>
+<tr class="separator:a36601445a915d1d5b839d930d4571291"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57f00b0a17f16d6803136a246d4a1da9"><td class="memItemLeft" align="right" valign="top"><a id="a57f00b0a17f16d6803136a246d4a1da9" name="a57f00b0a17f16d6803136a246d4a1da9"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>scenery1</b> ()</td></tr>
+<tr class="separator:a57f00b0a17f16d6803136a246d4a1da9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a8f5c5163b269b98aff6cc2e174dab9"><td class="memItemLeft" align="right" valign="top"><a id="a9a8f5c5163b269b98aff6cc2e174dab9" name="a9a8f5c5163b269b98aff6cc2e174dab9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>printResults1</b> (int driver_count, int missing_packages)</td></tr>
+<tr class="separator:a9a8f5c5163b269b98aff6cc2e174dab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b1662c008bd85c2b1de95cde8baf692"><td class="memItemLeft" align="right" valign="top"><a id="a6b1662c008bd85c2b1de95cde8baf692" name="a6b1662c008bd85c2b1de95cde8baf692"></a>
+pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>DriverCount</b> ()</td></tr>
+<tr class="separator:a6b1662c008bd85c2b1de95cde8baf692"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a46a43c1fc66365c054f972f034dcbd"><td class="memItemLeft" align="right" valign="top"><a id="a1a46a43c1fc66365c054f972f034dcbd" name="a1a46a43c1fc66365c054f972f034dcbd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>scenery2</b> ()</td></tr>
+<tr class="separator:a1a46a43c1fc66365c054f972f034dcbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfb2b5ca115e3d03837335780ee1fc12"><td class="memItemLeft" align="right" valign="top"><a id="adfb2b5ca115e3d03837335780ee1fc12" name="adfb2b5ca115e3d03837335780ee1fc12"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>printResults2</b> (int &amp;numDeliveries) const</td></tr>
+<tr class="separator:adfb2b5ca115e3d03837335780ee1fc12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad97f4154723b41f0a3934158c63e26be"><td class="memItemLeft" align="right" valign="top"><a id="ad97f4154723b41f0a3934158c63e26be" name="ad97f4154723b41f0a3934158c63e26be"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>scenery3</b> ()</td></tr>
 <tr class="separator:ad97f4154723b41f0a3934158c63e26be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a419f6e4924af76f93b70dd4487bd88de"><td class="memItemLeft" align="right" valign="top"><a id="a419f6e4924af76f93b70dd4487bd88de" name="a419f6e4924af76f93b70dd4487bd88de"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>printResults</b> ()</td></tr>
 <tr class="separator:a419f6e4924af76f93b70dd4487bd88de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a62395b57264673bf31a3aeac91a8802d"><td class="memItemLeft" align="right" valign="top"><a id="a62395b57264673bf31a3aeac91a8802d" name="a62395b57264673bf31a3aeac91a8802d"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>compareMissingDeliveries</b> (const pair&lt; int, int &gt; &amp;v1, const pair&lt; int, int &gt; &amp;v2)</td></tr>
+<tr class="separator:a62395b57264673bf31a3aeac91a8802d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ac8c20d93f439ed4cfe36180c8868ca"><td class="memItemLeft" align="right" valign="top"><a id="a5ac8c20d93f439ed4cfe36180c8868ca" name="a5ac8c20d93f439ed4cfe36180c8868ca"></a>
+static <a class="el" href="class_driver.html">Driver</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> (list&lt; <a class="el" href="class_driver.html">Driver</a> &gt; _list, int _i)</td></tr>
+<tr class="separator:a5ac8c20d93f439ed4cfe36180c8868ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -135,8 +166,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>profit</b></td></tr>
 <tr class="separator:aabe415d02d76fc9034e44d9babf0fbd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/isabe/OneDrive/Ambiente de Trabalho/FEUP/2_Ano/2_Semestre/DA/Projeto1/feup-da-PackageDelivery/Src/<a class="el" href="_company_8h_source.html">Company.h</a></li>
-<li>C:/Users/isabe/OneDrive/Ambiente de Trabalho/FEUP/2_Ano/2_Semestre/DA/Projeto1/feup-da-PackageDelivery/Src/Company.cpp</li>
+<li>C:/Users/ASUS/OneDrive/Documentos/FEUP/2 ano/2 Semestre/DA/Projects/Proj1/feup-da-PackageDelivery/Src/<a class="el" href="_company_8h_source.html">Company.h</a></li>
+<li>C:/Users/ASUS/OneDrive/Documentos/FEUP/2 ano/2 Semestre/DA/Projects/Proj1/feup-da-PackageDelivery/Src/Company.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

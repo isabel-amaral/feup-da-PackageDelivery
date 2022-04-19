@@ -74,24 +74,7 @@ void Menu::menu0() {
 }
 
 void Menu::menu1(int normalDelscenery) {
-    string driversFile, normalDelFile, options;
-
-    cout << "Opcao 1: Otimizacao do numero de estafetas." << endl;
-    cout << "Opcao 2: Minimizacao do espaco desperdicado." << endl;
-    cout << "\nESCOLHA UMA OPCAO RELATIVA AO CENARIO:";
-    getline(cin, options);
-    if (options == "1") {
-        company.setOption(options);
-    }
-    else {
-        cout << "Opcao 1: Menor volume desperdicado." << endl;
-        cout << "Opcao 2: Menos peso desperdicado." << endl;
-        cout << "Opcao 3: Menor somatorio de volume e peso desperdicado." << endl;
-        cout << "\nESCOLHA UMA OPCAO RELATIVA AO CENARIO:";
-        getline(cin, options);
-        int optionss = stoi(options) + 1;
-        company.setOption(to_string(optionss));
-    }
+    string driversFile, normalDelFile;
 
     cout << "Insira o nome do ficheiro dos drivers: (0 - Voltar)" << endl;
     getline(cin, driversFile);
