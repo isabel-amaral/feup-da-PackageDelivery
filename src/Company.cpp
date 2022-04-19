@@ -20,6 +20,10 @@ int Company::getProfit() const {
     return profit;
 }
 
+string Company::getOption() const {
+    return option;
+}
+
 void Company::setDrivers(const list<Driver> &drivers) {
     Company::drivers = drivers;
 }
@@ -33,7 +37,11 @@ void Company::setExpressDeliveries(const list<ExpressDelivery> &expressDeliverie
 }
 
 void Company::setProfit(int profit) {
-    Company::profit = profit;
+    this->profit = profit;
+}
+
+void Company::setOption(string option) {
+    this->option = option;
 }
 
 void Company::addDriver(const Driver &driver) {
@@ -92,21 +100,43 @@ int Company::scenery1() {
     normalDeliveries.sort(NormalDelivery::compareAddition);
     v1.push_back(Company::DriverCount());
 
-    v1.sort(Company::compareMissingDeliveries);
+    if (option == "1") {
+        v1.sort(Company::compareMissingDeliveries);
+    }
+    else if (option == "2") {
+        v1.sort(Company::compareWastedVolume);
+    }
+    else if (option == "3") {
+        v1.sort(Company::compareWastedWeight);
+    }
+    else if (option == "4") {
+        v1.sort(Company::compareWastedSpace);
+    }
 
     printResults1(v1.front().first,v1.front().second);
     return v1.front().second;
 }
 
 void Company::printResults1(int driver_count, int missing_packages) {
-    int coefficient = (normalDeliveries.size()/(normalDeliveries.size()+missing_packages))*100;
-    if (missing_packages > 0) {
-        cout << "There are " << driver_count << " drivers needed to deliver all the packages, although " << missing_packages << " packages didn't fit." << endl;
+    if (option == "1") {
+        if (missing_packages > 0) {
+            cout << "There are " << driver_count << " drivers needed to deliver all the packages, although " << missing_packages << " packages didn't fit." << endl;
+        }
+        else {
+            cout << "There are " << driver_count << " drivers needed to deliver all the packages." << endl;
+        }
+        int coefficient = (normalDeliveries.size()/(normalDeliveries.size()+missing_packages))*100;
+        cout << "The coefficient between the number of packages requested and delivered is " << coefficient << "%." << endl;
     }
-    else {
-        cout << "There are " << driver_count << " drivers needed to deliver all the packages." << endl;
+    else if (option == "2") {
+        cout << "There was a total of " << missing_packages << " wasted volume." << endl;
     }
-    cout << "The coefficient between the number of packages requested and delivered is " << coefficient << "%." << endl;
+    else if (option == "3") {
+        cout << "There was a total of " << driver_count << " wasted weight." << endl;
+    }
+    else if (option == "4") {
+        cout << "There was a total of " << driver_count << " wasted weight and " << missing_packages << " wasted volume." << endl;
+    }
 }
 
 pair<int,int> Company::DriverCount() {
@@ -142,14 +172,23 @@ pair<int,int> Company::DriverCount() {
         }
     }
 
+    int wasted_weight = 0;
+    int wasted_volume = 0;
+
     for (Driver driver : remaining) {
         profit -= driver.getDeliveryCost();
+        wasted_volume += driver.getMaxVolume();
+        wasted_weight += driver.getMaxWeight();
     }
 
     pair<int,int> v1;
+    pair<int,int> v2;
     v1.first = ans;
     v1.second = missing;
-    return v1;
+    v2.first = wasted_weight;
+    v2.second = wasted_volume;
+    if (option == "1") return v1;
+    return v2;
 }
 
 bool Company::compareMissingDeliveries(const pair<int,int> &v1, const pair<int,int> &v2) {
@@ -157,6 +196,19 @@ bool Company::compareMissingDeliveries(const pair<int,int> &v1, const pair<int,i
     if (v1.second==v2.second)
         return v1.first<v2.first;
     return v1.second<v2.second;
+}
+
+bool Company::compareWastedVolume(const pair<int, int> &v1, const pair<int, int> &v2) {
+    return v1.second<v2.second;
+}
+
+bool Company::compareWastedWeight(const pair<int, int> &v1, const pair<int, int> &v2) {
+    return v1.first<v2.first;
+}
+
+bool Company::compareWastedSpace(const pair<int,int> &v1, const pair<int,int> &v2) {
+    // sort by number of missing packages, if  the same, by number of drivers necessary, in ascending order
+    return ((v1.first+v1.second)<(v2.second+v2.first));
 }
 
 Driver Company::get(list<Driver> _list, int _i){
