@@ -184,7 +184,6 @@ void Company::scenery2() {
             numDeliveries = normalDeliveries.size() - remainingDelScenery1;
         else profit = totalProfit;
     }
-    profit = totalProfit;
     printResults2(numDeliveries);
 }
 
