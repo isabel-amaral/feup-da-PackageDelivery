@@ -43,7 +43,8 @@ bool NormalDelivery::compareAddition(const NormalDelivery& n1, const NormalDeliv
 }
 
 bool NormalDelivery::compareFee(const NormalDelivery &a, const NormalDelivery &b) {
-    //if (a.deliveryFee == b.deliveryFee) return a.weight + a.volume < b.weight + b.volume; TODO: Decidir se deve-se considerar este caso ou não
+    if (a.deliveryFee == b.deliveryFee)
+        return a.weight + a.volume < b.weight + b.volume;
     return a.deliveryFee > b.deliveryFee;
 }
 
