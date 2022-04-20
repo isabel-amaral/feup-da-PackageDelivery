@@ -13,10 +13,6 @@ int ExpressDelivery::getPriority() const {
     return priority;
 }
 
-void ExpressDelivery::setEstimatedDeliveryTime(int edt) {
-    estimatedDeliveryTime = edt;
-}
-
 void ExpressDelivery::incrementPriority() {
     priority++;
 }

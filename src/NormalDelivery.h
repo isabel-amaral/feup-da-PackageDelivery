@@ -12,9 +12,11 @@ public:
     int getWeight() const;
     int getDeliveryFee() const;
     int getPriority() const;
-    void setVolume(int vol);
-    void setWeight(int wei);
-    void setDeliveryFee(int fee);
+    static bool compareWeight(const NormalDelivery& n1, const NormalDelivery& n2);
+    static bool compareVolume(const NormalDelivery& n1, const NormalDelivery& n2);
+    static bool compareAddition(const NormalDelivery& n1, const NormalDelivery& n2);
+    static bool compareFee(const NormalDelivery& a, const NormalDelivery& b);
+    bool operator== (const NormalDelivery& delivery) const;
 };
 
 

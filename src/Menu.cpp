@@ -90,14 +90,17 @@ void Menu::menu1(int normalDelscenery) {
     else
         normalDelFile += ".txt";
 
+    char priority;
+    cout << "Deseja realizar primeiro a entrega de encomendas que tenham sobrado do dia anterior? (s - sim/n - nao)" << endl;
+    cin >> priority;
+    if (priority != 's' && priority != 'S')
+        company.getNormalDeliveries().clear();
     company.getDrivers().clear();
-    company.getNormalDeliveries().clear();
-    //TODO: DESCOMENTAR ISTO
-    /*
-    if (loadData.loadDrivers(driversFile) && loadData.loadNormalDeliveries(normalDelFile)){
+
+    if (loadData.loadDrivers(driversFile) && loadData.loadNormalDeliveries(normalDelFile)){ //TODO: COMENTARIO COM EXPLICACAO
         if (normalDelscenery == 1) company.scenery1();
         else company.scenery2();
-    }*/
+    }
 
     cout << endl;
     option = lastMenu.top();
@@ -115,7 +118,12 @@ void Menu::menu3() {
     else
         expressDelFile += ".txt";
 
-    company.getExpressDeliveries().clear();
+    char priority;
+    cout << "Deseja realizar primeiro a entrega de encomendas que tenham sobrado do dia anterior? (s - sim/n - nao)" << endl;
+    cin >> priority;
+    if (priority != 's' && priority != 'S')
+        company.getExpressDeliveries().clear();
+
     if (loadData.loadExpressDeliveries(expressDelFile))
         company.scenery3();
 
@@ -124,4 +132,3 @@ void Menu::menu3() {
     lastMenu.pop();
     processOption();
 }
-

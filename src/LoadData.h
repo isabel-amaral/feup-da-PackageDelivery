@@ -14,11 +14,9 @@ private:
 public:
     LoadData();
     LoadData(Company *company);
-    //LoadData(Company *company, const string& driversFilename, const string& normalDelFilename, const string& expressDelFilename);
     bool loadDrivers(const string& driversFilename);
     bool loadNormalDeliveries(const string& normalDelFilename);
     bool loadExpressDeliveries(const string& expressDelFilename);
-    //const Company& getCompany() const;
 };
 
 #endif //FEUP_DA_PACKAGEDELIVERY_LOADDATA_H
