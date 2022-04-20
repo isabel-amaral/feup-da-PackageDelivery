@@ -17,33 +17,26 @@ class Company {
     list<ExpressDelivery> expressDeliveries;
     list<ExpressDelivery> delivered;
     int profit;
-    struct scenery1Results{
+    struct scenery1Results {
         int drivers;
         int remainingPackages;
         int profit;
     };
 public:
     Company();
-    list<Driver> &getDrivers();
-    list<NormalDelivery> &getNormalDeliveries();
-    list<ExpressDelivery> &getExpressDeliveries();
-    int getProfit() const;
-    void setDrivers(const list<Driver> &drivers);
-    void setNormalDeliveries(const list<NormalDelivery> &normalDeliveries);
-    void setExpressDeliveries(const list<ExpressDelivery> &expressDeliveries);
+    list<Driver>& getDrivers();
+    list<NormalDelivery>& getNormalDeliveries();
+    list<ExpressDelivery>& getExpressDeliveries();
     void setProfit(int profit);
-    void addDriver(const Driver &driver);
-    void addNormalDelivery(const NormalDelivery &normalDelivery);
-    void addExpressDelivery(const ExpressDelivery &expressDelivery);
-    void updateProfit (const int& profit);
-    void deliverNormalDelivery(const NormalDelivery& normalDelivery);
-    void deliverExpressDelivery(const ExpressDelivery& expressDelivery); //TODO: decidir se é necessario
+    void addDriver(const Driver& driver);
+    void addNormalDelivery(const NormalDelivery& normalDelivery);
+    void addExpressDelivery(const ExpressDelivery& expressDelivery);
 
     /*________________scenery1_____________*/
     int scenery1();
-    static void checkBestResult(scenery1Results &result, scenery1Results &currentBestResult);
-    scenery1Results driverCount();
-    void printResults1(int driver_count, int missing_packages);
+    static void checkBestResult(scenery1Results& result, scenery1Results& currentBestResult) const;
+    scenery1Results alocatePackages();
+    void printResults1(int driver_count, int missing_packages) const;
 
     /*________________scenery2_____________*/
     void scenery2();
@@ -51,7 +44,7 @@ public:
 
     /*________________scenery3_______________*/
     void scenery3();
-    void printResults();
+    void printResults3() const;
 };
 
 

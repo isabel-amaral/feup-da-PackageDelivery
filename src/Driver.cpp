@@ -29,23 +29,6 @@ const list<NormalDelivery>& Driver::getOrdersToDeliver() const {
     return ordersToDeliver;
 }
 
-void Driver::setMaxWeight(int maxWeight) {
-    this->maxWeight = maxWeight;
-}
-
-void Driver::setMaxVolume(int maxVolume) {
-    this->maxVolume = maxVolume;
-}
-
-void Driver::setDeliveryCost(int deliveryCost) {
-    this->deliveryCost = deliveryCost;
-}
-
-void Driver::setOrdersToDeliver(const list<NormalDelivery> &ordersToDeliver) {
-    this->ordersToDeliver = ordersToDeliver;
-}
-
-//TODO: verificar se é possível
 bool Driver::addOrder(const NormalDelivery &order) {
     if (currentOrderWeight + order.getWeight() > maxWeight)
         return false;

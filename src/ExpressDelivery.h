@@ -6,7 +6,6 @@ class ExpressDelivery {
 public:
     ExpressDelivery(int edt);
     int getEstimatedDeliveryTime() const;
-    void setEstimatedDeliveryTime(int edt);
     static bool compareExpressDeliveries(const ExpressDelivery& a, const ExpressDelivery& b);
 };
 

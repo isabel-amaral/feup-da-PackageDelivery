@@ -18,18 +18,6 @@ int NormalDelivery::getDeliveryFee() const {
     return deliveryFee;
 }
 
-void NormalDelivery::setVolume(int vol) {
-    volume = vol;
-}
-
-void NormalDelivery::setWeight(int wei) {
-    weight = wei;
-}
-
-void NormalDelivery::setDeliveryFee(int fee) {
-    deliveryFee = fee;
-}
-
 bool NormalDelivery::compareWeight(const NormalDelivery& n1, const NormalDelivery& n2) {
     return n1.getWeight() > n2.getWeight();
 }
