@@ -36,11 +36,11 @@ void Company::addExpressDelivery(const ExpressDelivery& expressDelivery) {
 void Company::printResults1(int driver_count, int missing_packages) const {
     int percentage = (normalDeliveries.size()/(normalDeliveries.size()+missing_packages))*100;
     if (missing_packages > 0)
-        cout << "There are " << driver_count << " drivers needed to deliver all the packages, although "
-        << missing_packages << " packages didn't fit." << endl;
+        cout << "Sao necessarios " << driver_count << " estafetas. No entanto, não foi possível entregar "
+        << missing_packages << " encomendas." << endl;
     else
-        cout << "There are " << driver_count << " drivers needed to deliver all the packages." << endl;
-    cout << "The coefficient between the number of packages requested and delivered is " << percentage << "%." << endl;
+        cout << "Sao necessarios " << driver_count << " estafetas para entregar todas as encomendas." << endl;
+    cout << "A percentagem do numero de encomendas entregue foi " << percentage << "%." << endl;
 }
 
 Company::scenery1Results Company::alocatePackages() {
