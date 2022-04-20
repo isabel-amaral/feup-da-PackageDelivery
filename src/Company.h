@@ -34,7 +34,7 @@ public:
 
     /*________________scenery1_____________*/
     int scenery1();
-    static void checkBestResult(scenery1Results& result, scenery1Results& currentBestResult) const;
+    static void checkBestResult(scenery1Results& result, scenery1Results& currentBestResult);
     scenery1Results alocatePackages();
     void printResults1(int driver_count, int missing_packages) const;
 
