@@ -19,7 +19,7 @@ class Company {
     int profit;
     struct scenery1Results {
         int drivers;
-        int remainingPackages;
+        list<NormalDelivery> remainingPackages;
         int profit;
     };
 public:
@@ -33,10 +33,10 @@ public:
     void addExpressDelivery(const ExpressDelivery& expressDelivery);
 
     /*________________scenery1_____________*/
-    int scenery1();
+    scenery1Results scenery1();
     static void checkBestResult(scenery1Results& result, scenery1Results& currentBestResult);
     scenery1Results alocatePackages();
-    void printResults1(int driver_count, int missing_packages) const;
+    static void printResults1(const scenery1Results& results, const int& percentage) ;
 
     /*________________scenery2_____________*/
     void scenery2();
