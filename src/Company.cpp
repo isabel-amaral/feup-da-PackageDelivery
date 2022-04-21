@@ -138,7 +138,7 @@ void Company::scenery2() {
         foundDriver = false;
         bestProfit = 0;
         for (auto driver = copyDrivers.begin(); driver != copyDrivers.end(); driver++) {
-            auxProfit = totalProfit;
+            auxProfit = 0;
             for (auto& delivery: remainingPackages2) {
                 if (driver->addOrder(delivery))
                     auxProfit += delivery.getDeliveryFee();
@@ -151,7 +151,9 @@ void Company::scenery2() {
             }
         }
         if (!foundDriver) continue;
-        totalProfit = bestProfit;
+        if (bestProfit < 0)
+            break;
+        totalProfit += bestProfit;
         numDeliveries += bestDriver->getOrdersToDeliver().size();
         for (auto& delivery: bestDriver->getOrdersToDeliver())
             remainingPackages2.remove(delivery);
@@ -161,8 +163,9 @@ void Company::scenery2() {
     } while (foundDriver);
 
     if (!remainingPackages2.empty()) {
-        scenery1Results r1= scenery1();
-        if (r1.remainingPackages.size() < remainingPackages2.size()){
+        scenery1Results r1 = scenery1();
+        if (r1.remainingPackages.size() < remainingPackages2.size() &&
+            r1.profit > totalProfit) {
             numDeliveries = numPackages - r1.remainingPackages.size();
             profit = r1.profit;
         }
