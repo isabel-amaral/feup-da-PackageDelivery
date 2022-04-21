@@ -17,11 +17,16 @@ class Company {
     list<ExpressDelivery> expressDeliveries;
     list<ExpressDelivery> delivered;
     int profit;
+    //auxiliary values for storing/printing results
     struct scenery1Results {
         int drivers;
         list<NormalDelivery> remainingPackages;
         int profit;
     };
+    scenery1Results results1;
+    int percentage;
+    int numDeliveries;
+
 public:
     Company();
     list<Driver>& getDrivers();
@@ -32,15 +37,20 @@ public:
     void addNormalDelivery(const NormalDelivery& normalDelivery);
     void addExpressDelivery(const ExpressDelivery& expressDelivery);
 
+    //auxiliary methods for storing/printing results
+    const scenery1Results &getResults1() const;
+    int getPercentage() const;
+    int getNumDeliveries() const;
+
     /*________________scenery1_____________*/
     scenery1Results scenery1();
     static void checkBestResult(scenery1Results& result, scenery1Results& currentBestResult);
     scenery1Results alocatePackages();
-    static void printResults1(const scenery1Results& results, const int& percentage) ;
+    static void printResults1(const scenery1Results& results, const int& percentage);
 
     /*________________scenery2_____________*/
     void scenery2();
-    void printResults2(int &numDeliveries) const;
+    void printResults2(int numDeliveries) const;
 
     /*________________scenery3_______________*/
     void scenery3();

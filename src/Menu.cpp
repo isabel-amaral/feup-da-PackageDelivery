@@ -98,8 +98,14 @@ void Menu::menu1(int normalDelscenery) {
     company.getDrivers().clear();
 
     if (loadData.loadDrivers(driversFile) && loadData.loadNormalDeliveries(normalDelFile)){ //TODO: COMENTARIO COM EXPLICACAO
-        if (normalDelscenery == 1) company.scenery1();
-        else company.scenery2();
+        if (normalDelscenery == 1)  {
+            company.scenery1();
+            company.printResults1(company.getResults1(), company.getPercentage());
+        }
+        else {
+            company.scenery2();
+            company.printResults2(company.getNumDeliveries());
+        }
     }
 
     cout << endl;
@@ -124,8 +130,10 @@ void Menu::menu3() {
     if (priority != 's' && priority != 'S')
         company.getExpressDeliveries().clear();
 
-    if (loadData.loadExpressDeliveries(expressDelFile))
+    if (loadData.loadExpressDeliveries(expressDelFile)) {
         company.scenery3();
+        company.printResults3();
+    }
 
     cout << endl;
     option = lastMenu.top();

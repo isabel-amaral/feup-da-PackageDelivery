@@ -32,6 +32,18 @@ void Company::addExpressDelivery(const ExpressDelivery& expressDelivery) {
     this->expressDeliveries.push_back(expressDelivery);
 }
 
+const Company::scenery1Results& Company::getResults1() const {
+    return results1;
+}
+
+int Company::getPercentage() const {
+    return percentage;
+}
+
+int Company::getNumDeliveries() const {
+    return numDeliveries;
+}
+
 /*____________cenário 1____________*/
 void Company::printResults1(const scenery1Results& results, const int& percentage) {
 
@@ -91,7 +103,7 @@ void Company::checkBestResult(Company::scenery1Results& result, Company::scenery
 
 Company::scenery1Results Company::scenery1() {
     scenery1Results bestResult {};
-    scenery1Results auxResult{};
+    scenery1Results auxResult {};
 
     // Different ways of sorting the lists to get best solution
     drivers.sort(Driver::compareVolume);
@@ -109,23 +121,24 @@ Company::scenery1Results Company::scenery1() {
     checkBestResult(auxResult, bestResult);
 
     //profit = bestResult.profit;
-    int percentage = (normalDeliveries.size()/(normalDeliveries.size()+bestResult.remainingPackages.size()))*100;
+    percentage = (normalDeliveries.size()/(normalDeliveries.size()+bestResult.remainingPackages.size()))*100;
     normalDeliveries = bestResult.remainingPackages;
     for (NormalDelivery& n: normalDeliveries)
         n.incrementPriority();
 
-    printResults1(bestResult, percentage);
+    results1 = bestResult;
     return bestResult;
 }
 
 
 /*____________cenário 2____________*/
-void Company::printResults2(int &numDeliveries) const {
+void Company::printResults2(int numDeliveries) const {
     cout << "No maximo sera possivel entregar " << numDeliveries << " encomendas." << endl;
     cout << "A empresa fica com um lucro de " << profit << " euros." << endl;
 }
 void Company::scenery2() {
-    int bestProfit, auxProfit, totalProfit = 0, numDeliveries = 0, numPackages = normalDeliveries.size();
+    int bestProfit, auxProfit, totalProfit = 0, numPackages = normalDeliveries.size();
+    numDeliveries = 0;
     bool foundDriver;
     list<Driver>::iterator bestDriver;
     list<NormalDelivery> remainingPackages2 = normalDeliveries;
@@ -178,7 +191,6 @@ void Company::scenery2() {
     normalDeliveries = remainingPackages2;
     for (NormalDelivery& n: normalDeliveries)
         n.incrementPriority();
-    printResults2(numDeliveries);
 }
 
 /*____________cenário 3____________*/
@@ -218,5 +230,4 @@ void Company::scenery3() {
     }
     for (ExpressDelivery& e: expressDeliveries)
         e.incrementPriority();
-    printResults3();
 }
