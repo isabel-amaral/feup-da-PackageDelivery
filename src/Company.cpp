@@ -63,6 +63,8 @@ Company::scenery1Results Company::alocatePackages() {
 
         if (j == numDrivers) { // if package doesn't fit in any of the drivers selected for deliveries
             driverIndex++;
+            if (driverIndex == drivers.end())
+                break;
             Driver driver = *driverIndex;
             if (driver.addOrder(*delivery)) {
                 remainingPackages.erase(delivery--);
