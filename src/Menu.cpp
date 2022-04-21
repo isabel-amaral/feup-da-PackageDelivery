@@ -97,7 +97,7 @@ void Menu::menu1(int normalDelscenery) {
         company.getNormalDeliveries().clear();
     company.getDrivers().clear();
 
-    if (loadData.loadDrivers(driversFile) && loadData.loadNormalDeliveries(normalDelFile)){ //TODO: COMENTARIO COM EXPLICACAO
+    if (loadData.loadDrivers(driversFile) && loadData.loadNormalDeliveries(normalDelFile)){ //if both files exists
         if (normalDelscenery == 1)  {
             company.scenery1();
             company.printResults1(company.getResults1(), company.getPercentage());
