@@ -62,7 +62,7 @@ Company::scenery1Results Company::alocatePackages() {
         }
 
         if (j == numDrivers) { // if package doesn't fit in any of the drivers selected for deliveries
-            driverIndex++ ;
+            driverIndex++;
             Driver driver = *driverIndex;
             if (driver.addOrder(*delivery)) {
                 remainingPackages.erase(delivery--);
@@ -109,6 +109,9 @@ Company::scenery1Results Company::scenery1() {
     //profit = bestResult.profit;
     int percentage = (normalDeliveries.size()/(normalDeliveries.size()+bestResult.remainingPackages.size()))*100;
     normalDeliveries = bestResult.remainingPackages;
+    for (NormalDelivery& n: normalDeliveries)
+        n.incrementPriority();
+
     printResults1(bestResult, percentage);
     return bestResult;
 }
@@ -161,15 +164,15 @@ void Company::scenery2() {
             numDeliveries = numPackages - r1.remainingPackages.size();
             profit = r1.profit;
         }
-
-        else{
+        else {
             profit = totalProfit;
             normalDeliveries = remainingPackages2;
         }
-
     }
     else profit = totalProfit;
     normalDeliveries = remainingPackages2;
+    for (NormalDelivery& n: normalDeliveries)
+        n.incrementPriority();
     printResults2(numDeliveries);
 }
 

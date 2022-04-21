@@ -9,7 +9,7 @@ public:
     int getEstimatedDeliveryTime() const;
     int getPriority() const;
     void incrementPriority();
-    static bool compareExpressDeliveries(const ExpressDelivery& a, const ExpressDelivery& b);
+    static bool compareExpressDeliveries(const ExpressDelivery& n1, const ExpressDelivery& n2);
 };
 
 
