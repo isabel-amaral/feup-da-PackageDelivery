@@ -46,7 +46,6 @@ int Company::getNumDeliveries() const {
 
 /*____________cenário 1____________*/
 void Company::printResults1(const scenery1Results& results, const int& percentages) {
-
     if (!results.remainingPackages.empty())
         cout << "Sao necessarios " << results.drivers << " estafetas. No entanto, nao foi possivel entregar " << results.remainingPackages.size() << " encomendas." << endl;
     else
@@ -120,7 +119,6 @@ Company::scenery1Results Company::scenery1() {
     auxResult = allocatePackages();
     checkBestResult(auxResult, bestResult);
 
-    //profit = bestResult.profit;
     percentage = ((normalDeliveries.size()*100)/(normalDeliveries.size()+bestResult.remainingPackages.size()));
     normalDeliveries = bestResult.remainingPackages;
     for (NormalDelivery& n: normalDeliveries)
@@ -157,7 +155,7 @@ void Company::scenery2() {
                     auxProfit += delivery.getDeliveryFee();
             }
             auxProfit -= driver->getDeliveryCost();
-            if (auxProfit > bestProfit && auxProfit > 0) { //TODO: INCLUIR A CONDICAO DE MAIOR NUMERO DE ENCOMENDAS (CASO auxProfit == bestProfit)?
+            if (auxProfit > bestProfit && auxProfit > 0) {
                 bestProfit = auxProfit;
                 bestDriver = driver;
                 foundDriver = true;
