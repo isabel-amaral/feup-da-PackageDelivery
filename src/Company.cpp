@@ -36,7 +36,7 @@ void Company::addExpressDelivery(const ExpressDelivery& expressDelivery) {
 void Company::printResults1(const scenery1Results& results, const int& percentage) {
 
     if (!results.remainingPackages.empty())
-        cout << "Sao necessarios " << results.drivers << " estafetas. No entanto, não foi possível entregar " << results.remainingPackages.size() << " encomendas." << endl;
+        cout << "Sao necessarios " << results.drivers << " estafetas. No entanto, nao foi possivel entregar " << results.remainingPackages.size() << " encomendas." << endl;
     else
         cout << "Sao necessarios " << results.drivers << " estafetas para entregar todas as encomendas." << endl;
     cout << "A percentagem do numero de encomendas entregue foi " << percentage << "%." << endl;
