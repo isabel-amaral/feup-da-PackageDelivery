@@ -45,8 +45,8 @@ public:
     /*________________scenery1_____________*/
     scenery1Results scenery1();
     static void checkBestResult(scenery1Results& result, scenery1Results& currentBestResult);
-    scenery1Results alocatePackages();
-    static void printResults1(const scenery1Results& results, const int& percentage);
+    scenery1Results allocatePackages();
+    static void printResults1(const scenery1Results& results, const int& percentages);
 
     /*________________scenery2_____________*/
     void scenery2();

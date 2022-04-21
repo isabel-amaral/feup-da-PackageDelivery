@@ -45,21 +45,21 @@ int Company::getNumDeliveries() const {
 }
 
 /*____________cenário 1____________*/
-void Company::printResults1(const scenery1Results& results, const int& percentage) {
+void Company::printResults1(const scenery1Results& results, const int& percentages) {
 
     if (!results.remainingPackages.empty())
         cout << "Sao necessarios " << results.drivers << " estafetas. No entanto, nao foi possivel entregar " << results.remainingPackages.size() << " encomendas." << endl;
     else
         cout << "Sao necessarios " << results.drivers << " estafetas para entregar todas as encomendas." << endl;
-    cout << "A percentagem do numero de encomendas entregue foi " << percentage << "%." << endl;
+    cout << "A percentagem do numero de encomendas entregue foi " << percentages << "%." << endl;
 }
 
-Company::scenery1Results Company::alocatePackages() {
+Company::scenery1Results Company::allocatePackages() {
     int auxProfit = 0;
     auto driverIndex = drivers.begin();
     int numDrivers = 1;         // number of drivers needed to transport the packages
     vector<Driver> usedDrivers; // weight and volume remaining in drivers selected for deliveries
-    list<NormalDelivery> remainingPackages = normalDeliveries;
+    list<NormalDelivery> remainingPackages(normalDeliveries);
 
 
     usedDrivers.push_back(drivers.front());
@@ -108,20 +108,20 @@ Company::scenery1Results Company::scenery1() {
     // Different ways of sorting the lists to get best solution
     drivers.sort(Driver::compareVolume);
     normalDeliveries.sort(NormalDelivery::compareVolume);
-    bestResult = alocatePackages();
+    bestResult = allocatePackages();
 
     drivers.sort(Driver::compareWeight);
     normalDeliveries.sort(NormalDelivery::compareWeight);
-    auxResult = alocatePackages();
+    auxResult = allocatePackages();
     checkBestResult(auxResult, bestResult);
 
     drivers.sort(Driver::compareAddition);
     normalDeliveries.sort(NormalDelivery::compareAddition);
-    auxResult = alocatePackages();
+    auxResult = allocatePackages();
     checkBestResult(auxResult, bestResult);
 
     //profit = bestResult.profit;
-    percentage = (normalDeliveries.size()/(normalDeliveries.size()+bestResult.remainingPackages.size()))*100;
+    percentage = ((normalDeliveries.size()*100)/(normalDeliveries.size()+bestResult.remainingPackages.size()));
     normalDeliveries = bestResult.remainingPackages;
     for (NormalDelivery& n: normalDeliveries)
         n.incrementPriority();
