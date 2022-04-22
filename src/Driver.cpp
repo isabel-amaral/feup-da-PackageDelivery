@@ -40,6 +40,12 @@ bool Driver::addOrder(const NormalDelivery &order) {
     return true;
 }
 
+void Driver::removeOrders() {
+    ordersToDeliver.clear();
+    currentOrderWeight = 0;
+    currentOrderVol = 0;
+}
+
 bool Driver::compareWeight(const Driver &d1, const Driver &d2) {
     return d1.getMaxWeight() > d2.getMaxWeight();
 }
@@ -52,14 +58,8 @@ bool Driver::compareAddition(const Driver &d1, const Driver &d2) {
     return d1.getMaxVolume() + d1.getMaxWeight() > d2.getMaxVolume() + d2.getMaxWeight();
 }
 
-void Driver::removeOrders() {
-    ordersToDeliver.clear();
-    currentOrderWeight = 0;
-    currentOrderVol = 0;
-}
-
-bool Driver::compareCost(const Driver &a, const Driver &b) {
-    if (a.deliveryCost == b.deliveryCost)
-        return a.maxWeight + a.maxVolume > b.maxWeight + b.maxVolume;
-    return a.deliveryCost < b.deliveryCost;
+bool Driver::compareCost(const Driver &d1, const Driver &d2) {
+    if (d1.deliveryCost == d2.deliveryCost)
+        return d1.maxWeight + d1.maxVolume > d2.maxWeight + d2.maxVolume;
+    return d1.deliveryCost < d2.deliveryCost;
 }

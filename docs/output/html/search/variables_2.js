@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['estimateddeliverytime_0',['estimatedDeliveryTime',['../class_express_delivery.html#a2b1c27d96541aae19c9d874b8dfde9a7',1,'ExpressDelivery']]]
+];

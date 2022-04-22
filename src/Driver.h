@@ -82,20 +82,18 @@ public:
     static bool compareVolume(const Driver &d1, const Driver &d2);
     /**
      * Compares drivers in descending order according to the sum of "maxWeight" and "maxVolume" attributes.
-     * @param d1
-     * @param d2
+     * @param d1 Driver 1
+     * @param d2 Driver 2
      * @return true if @param d1 is greater than @param d2, else returns false.
      */
     static bool compareAddition(const Driver &d1, const Driver &d2);
-    /**
-     * Compares drivers in ascending order according to their "deliveryCost" attribute.
-     * @param a Driver 1
-     * @param b Driver 2
-     * @return true if @param d1 is smaller than @param d2, else returns false.
-     */
-    static bool compareCost(const Driver& a, const Driver& b);
+     /**
+      * Compares drivers in ascending order according to their "deliveryCost" attribute.
+      * @param d1 Driver 1
+      * @param d2 Driver 2
+      * @return true if @param d1 is smaller than @param d2, else returns false.
+      */
+    static bool compareCost(const Driver& d1, const Driver& d2);
 };
 
 #endif //FEUP_DA_PACKAGEDELIVERY_DRIVER_H
-
-/*retorna true se a colocação da encomenda foi bem sucedida, isto é, se não ultrapassa as capacidades do carro, tendo em conta as outras encomendas previamente alocadas*/

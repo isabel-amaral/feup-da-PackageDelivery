@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['drivers_0',['drivers',['../class_company.html#a3d188f26f7095a1a7fea1b6caf33efee',1,'Company']]]
+  ['currentordervol_0',['currentOrderVol',['../class_driver.html#a88dc0b1d49e85fe82ea79821bdcd64cb',1,'Driver']]],
+  ['currentorderweight_1',['currentOrderWeight',['../class_driver.html#ab667d164051ab9a2f6ede4ab92246b1f',1,'Driver']]]
 ];
