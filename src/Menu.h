@@ -18,7 +18,7 @@ public:
     void readOption(const unsigned& minOption, const unsigned& maxOption);
     void processOption();
     void menu0();
-    void menu1(int normalDelScenery);
+    void menu1(const int& normalDelScenery);
     void menu3();
 };
 

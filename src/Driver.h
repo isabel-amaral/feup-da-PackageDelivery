@@ -35,7 +35,7 @@ private:
     int currentOrderVol;
 public:
     Driver();
-    Driver(int w, int v, int c);
+    Driver(const int& w, const int& v, const int& c);
     /**
      *
      * @return Maximum weight that the driver can transport.

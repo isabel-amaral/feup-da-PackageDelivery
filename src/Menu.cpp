@@ -73,7 +73,7 @@ void Menu::menu0() {
     }
 }
 
-void Menu::menu1(int normalDelscenery) {
+void Menu::menu1(const int& normalDelscenery) {
     string driversFile, normalDelFile;
 
     cout << "Insira o nome do ficheiro dos drivers: (0 - Voltar)" << endl;

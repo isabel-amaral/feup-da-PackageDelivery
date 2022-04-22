@@ -1,6 +1,6 @@
 #include "ExpressDelivery.h"
 
-ExpressDelivery::ExpressDelivery(int edt) {
+ExpressDelivery::ExpressDelivery(const int& edt) {
     estimatedDeliveryTime = edt;
     priority = 1;
 }

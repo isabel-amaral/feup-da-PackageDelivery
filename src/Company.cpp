@@ -16,8 +16,8 @@ list<ExpressDelivery>& Company::getExpressDeliveries() {
     return expressDeliveries;
 }
 
-void Company::setProfit(int profit) {
-    Company::profit = profit;
+void Company::setProfit(const int& profit) {
+    this->profit = profit;
 }
 
 void Company::addDriver(const Driver& driver) {
@@ -196,7 +196,7 @@ void Company::printResults3() const {
     int totalTimeSpent = 0;
     double average_time;
 
-    for (ExpressDelivery e: delivered)
+    for (const ExpressDelivery& e: delivered)
         totalTimeSpent += e.getEstimatedDeliveryTime();
     average_time = (double) totalTimeSpent / delivered.size();
 

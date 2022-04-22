@@ -1,6 +1,6 @@
 #include "NormalDelivery.h"
 
-NormalDelivery::NormalDelivery(int v, int w, int fee) {
+NormalDelivery::NormalDelivery(const int& v, const int& w, const int& fee) {
     volume = v;
     weight = w;
     deliveryFee = fee;

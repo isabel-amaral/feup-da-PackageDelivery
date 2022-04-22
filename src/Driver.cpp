@@ -4,7 +4,7 @@ Driver::Driver() {
 
 }
 
-Driver::Driver(int w, int v, int c) {
+Driver::Driver(const int& w, const int& v, const int& c) {
     this->maxWeight = w;
     this->maxVolume = v;
     this->deliveryCost = c;

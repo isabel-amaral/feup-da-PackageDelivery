@@ -32,7 +32,7 @@ public:
     list<Driver>& getDrivers();
     list<NormalDelivery>& getNormalDeliveries();
     list<ExpressDelivery>& getExpressDeliveries();
-    void setProfit(int profit);
+    void setProfit(const int& profit);
     void addDriver(const Driver& driver);
     void addNormalDelivery(const NormalDelivery& normalDelivery);
     void addExpressDelivery(const ExpressDelivery& expressDelivery);

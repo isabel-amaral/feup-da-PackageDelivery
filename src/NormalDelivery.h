@@ -19,7 +19,7 @@ class NormalDelivery {
      */
     int priority;
 public:
-    NormalDelivery(int v, int w, int fee);
+    NormalDelivery(const int& v,const int& w,const int& fee);
     /**
      *
      * @return Order volume.

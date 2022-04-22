@@ -11,7 +11,7 @@ class ExpressDelivery {
      */
     int priority;
 public:
-    ExpressDelivery(int edt);
+    ExpressDelivery(const int& edt);
     /**
      *
      * @return Estimated time for the order delivery.
