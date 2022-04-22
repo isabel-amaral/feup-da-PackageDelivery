@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['weight_0',['weight',['../class_normal_delivery.html#a894f82a26fc790f1be42ebe89d2a2884',1,'NormalDelivery']]]
+  ['results1_0',['results1',['../class_company.html#af3d12fc1576231642172bda9e4528a27',1,'Company']]]
 ];
